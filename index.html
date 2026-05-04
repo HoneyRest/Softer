@@ -5456,6 +5456,238 @@ body.theme-dark [style*="background: #fff"] {
 }
 </style>
 
+<style id="mobile-final-lockdown-softer">
+@media (max-width: 767px) {
+  html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    min-width: 0;
+  }
+  img, svg, canvas {
+    max-width: 100%;
+  }
+
+  #app, .content, .view, .card, .soft-card, .topbar, .today-hero-card {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .content {
+    padding-inline: clamp(14px, 4vw, 20px) !important;
+    padding-bottom: calc(300px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .brand-title-host--mobile {
+    display: none !important;
+  }
+  body {
+    padding-bottom: calc(148px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  #view-rituals .stack {
+    gap: 8px !important;
+  }
+  #view-rituals .card.hero:first-of-type {
+    padding: 14px 14px 12px !important;
+    margin-bottom: 0 !important;
+  }
+  #view-rituals .ritual-scroll-row {
+    margin-block: 0 !important;
+    padding-inline: 2px 22px !important;
+  }
+  #view-rituals .ritual-scroll-row::after {
+    content: "";
+    flex: 0 0 8px;
+  }
+  #view-rituals article.card.hero:nth-of-type(2) {
+    padding: 16px 14px 18px !important;
+  }
+  #view-rituals article.card.hero:nth-of-type(2) h3 {
+    font-size: 1rem !important;
+  }
+  #view-rituals article.card.hero:nth-of-type(2) [style*="width:72px"] {
+    width: 56px !important;
+    height: 56px !important;
+  }
+  #view-rituals article.card.hero:nth-of-type(2) [style*="font-size: 2rem"] {
+    font-size: 1.45rem !important;
+  }
+  /* Hero + stack: override desktop min-heights / 32px gaps (761–767px still picked up base rules) */
+  .softer-luxe-hero {
+    min-height: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    align-items: stretch !important;
+    gap: clamp(10px, 3vw, 18px) !important;
+    padding: clamp(14px, 4vw, 22px) !important;
+  }
+  .home-rhythm-donut {
+    width: min(68vw, 248px) !important;
+    margin-inline: auto !important;
+  }
+  #view-today .stack,
+  .view.active .stack {
+    gap: 18px !important;
+  }
+  .softer-demo-chip {
+    display: none !important;
+  }
+
+  .topbar {
+    min-height: 64px !important;
+    max-height: 76px !important;
+    padding-top: max(10px, env(safe-area-inset-top, 0px)) !important;
+    padding-bottom: 10px !important;
+    padding-inline: 12px !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+  }
+  .topbar-greet,
+  .topbar-date-text,
+  .topbar-subtext-text {
+    display: none !important;
+  }
+  .topbar h2 {
+    font-size: clamp(15px, 4.1vw, 18px) !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    max-width: min(200px, 56vw) !important;
+    line-height: 1.12 !important;
+  }
+
+  .softer-hero-title,
+  .dash-hero-heading h1,
+  .home-hero h1 {
+    font-size: clamp(28px, 8vw, 40px) !important;
+    line-height: 1.05 !important;
+  }
+  .view p, .card p {
+    font-size: 15px !important;
+    line-height: 1.52 !important;
+  }
+
+  /* Collapse decorative dead space */
+  :is(.card, .soft-card, .today-hero-card, .home-rhythm-card, .softer-energy-card,
+      .softer-reset-card, .softer-feeling-card, .softer-priorities-card, .weekly,
+      .task-section, .ritual-section, .journal-entry, .gratitude-card, .metric-card) {
+    min-height: unset !important;
+    height: auto !important;
+    margin-bottom: clamp(14px, 4vw, 22px) !important;
+    padding-block: clamp(18px, 5vw, 26px) !important;
+  }
+  .rhythm-ring,
+  #todayHeroRingMount .rhythm-ring {
+    --ring-size: clamp(112px, 34vw, 156px) !important;
+  }
+
+  /* Ritual chips: intentional horizontal rail with affordance */
+  .ritual-scroll-row {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding-inline: 2px 14px !important;
+    scroll-padding-inline: 14px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .ritual-quick-chip {
+    flex: 0 0 auto !important;
+    min-width: 64px !important;
+    max-width: 96px !important;
+    padding: 8px 7px !important;
+  }
+  .rqc-label {
+    max-width: none !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    font-size: 10px !important;
+    line-height: 1.25 !important;
+  }
+
+  .grid,
+  .grid-2,
+  .grid-3,
+  .task-grid,
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .bottom-nav {
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    max-width: calc(100% - 24px) !important;
+    bottom: max(10px, env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 1200 !important;
+  }
+  .quick-add-fab {
+    right: 18px !important;
+    bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+    z-index: 1210 !important;
+  }
+  .etsy-install-hint,
+  .quick-add-sheet,
+  #premiumPwaWelcome,
+  .gratitude-overlay.show {
+    display: none !important;
+  }
+  .quick-add-fab {
+    display: none !important;
+  }
+  .mobile-footer-credit {
+    display: none !important;
+  }
+}
+</style>
+
+<style id="softer-final-product-pass">
+@media (max-width: 767px) {
+  #view-today .stack,
+  .view.active .stack {
+    gap: 24px !important;
+  }
+  .card, .soft-card {
+    border-radius: 22px !important;
+    box-shadow: 0 14px 36px rgba(92, 70, 60, 0.07), inset 0 1px 0 rgba(255, 255, 255, 0.85) !important;
+  }
+  body.dark .card,
+  body.theme-dark .card,
+  html.dark body .card {
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+  }
+}
+@media (min-width: 900px) {
+  .app-shell .content {
+    max-width: min(960px, 100%) !important;
+  }
+}
+.bottom-nav-btn.active {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary, #b87c6c) 35%, transparent),
+    0 6px 18px color-mix(in srgb, var(--primary, #b87c6c) 22%, transparent);
+}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes softerRhythmGlow {
+    0%, 100% { filter: drop-shadow(0 6px 14px rgba(184, 124, 108, 0.12)); }
+    50% { filter: drop-shadow(0 10px 22px rgba(184, 124, 108, 0.2)); }
+  }
+  #todayHeroRingMount .rhythm-ring,
+  .rhythm-ring {
+    animation: softerRhythmGlow 5.5s ease-in-out infinite;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rhythm-ring,
+  #todayHeroRingMount .rhythm-ring {
+    animation: none !important;
+  }
+}
+.view {
+  transition: opacity 0.22s ease;
+}
+</style>
+
 </head>
 <body>
   <div id="splash" style="position:fixed;inset:0;background:var(--surface,#fff8f5);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.45s ease;">
@@ -10003,7 +10235,7 @@ body.theme-dark [style*="background: #fff"] {
               + "aria-label='" + escapeHtml(r.text) + (r.done ? " (done)" : "") + "' "
               + "type='button'>"
               + "<span class='rqc-check'>" + (r.done ? "✅" : (r.bucket === "Morning" ? "🌅" : "🌙")) + "</span>"
-              + "<span class='rqc-label'>" + escapeHtml(r.text.length > 12 ? r.text.slice(0, 11) + "…" : r.text) + "</span>"
+              + "<span class='rqc-label'>" + escapeHtml(r.text) + "</span>"
               + "</button>";
           }).join("");
         } else if (scrollRow) {
