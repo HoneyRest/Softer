@@ -12660,6 +12660,238 @@ body.theme-dark [style*="background: #fff"] {
     .softer-atmosphere-cluster .softer-privacy-chip-row { display: none; }
   }
 </style>
+
+<style id="softer-premium-v2">
+/* ═══════════════════════════════════════════════
+   SOFTER — PREMIUM UPGRADE V2
+   ─────────────────────────────────────────────── */
+
+/* ── CRITICAL FIX: Hide install overlay on desktop ── */
+/* "Add to Home Screen" is only relevant on mobile */
+@media (min-width: 768px) {
+  #premiumPwaWelcome { display: none !important; }
+}
+
+/* ── 1. SHADOW SYSTEM ── */
+:root {
+  --shadow-card-softer: 0 2px 12px rgba(120,80,60,.07), 0 1px 3px rgba(120,80,60,.04);
+  --shadow-elevated-softer: 0 10px 32px rgba(120,80,60,.11), 0 2px 8px rgba(120,80,60,.06);
+  --shadow-float-softer: 0 20px 56px rgba(120,80,60,.14), 0 4px 14px rgba(120,80,60,.07);
+  --shadow-inner-softer: inset 0 1px 0 rgba(255,255,255,.82);
+}
+body.dark {
+  --shadow-card-softer: 0 2px 12px rgba(0,0,0,.30), 0 1px 3px rgba(0,0,0,.2);
+  --shadow-elevated-softer: 0 10px 32px rgba(0,0,0,.44), 0 2px 8px rgba(0,0,0,.28);
+  --shadow-float-softer: 0 20px 56px rgba(0,0,0,.58), 0 4px 14px rgba(0,0,0,.36);
+  --shadow-inner-softer: inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+/* ── 2. CARD ELEVATION — Fix near-invisible cards in light mode ── */
+.card, article.card, .app-card {
+  border-radius: 22px !important;
+  box-shadow: var(--shadow-elevated-softer), var(--shadow-inner-softer) !important;
+  border: 1px solid rgba(200,170,150,.18) !important;
+  transition: transform 200ms ease, box-shadow 200ms ease !important;
+}
+body.dark .card, body.dark article.card, body.dark .app-card {
+  border-color: rgba(255,255,255,.08) !important;
+  box-shadow: var(--shadow-elevated-softer), var(--shadow-inner-softer) !important;
+}
+@media (hover: hover) {
+  .card:hover, article.card:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-float-softer), var(--shadow-inner-softer) !important;
+  }
+}
+
+/* ── 3. RHYTHM RING CARD: Premium hero ── */
+.softer-luxe-hero, .softer-hero-card, .softer-ring-card {
+  background: linear-gradient(158deg,
+    rgba(255,253,250,.98) 0%,
+    rgba(250,242,235,.95) 100%) !important;
+  box-shadow: var(--shadow-float-softer), var(--shadow-inner-softer) !important;
+  border-radius: 28px !important;
+  border-color: rgba(200,170,150,.22) !important;
+}
+body.dark .softer-luxe-hero, body.dark .softer-hero-card, body.dark .softer-ring-card {
+  background: linear-gradient(158deg,
+    rgba(38,32,28,.98) 0%,
+    rgba(32,26,22,.96) 100%) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+
+/* ── 4. MINI RESET / PERSONALIZE TABS ── */
+.softer-mode-toggle-wrap, .softer-top-tabs, .softer-tab-bar {
+  background: rgba(255,253,250,.9) !important;
+  border-radius: 999px !important;
+  padding: 4px !important;
+  box-shadow: var(--shadow-card-softer), var(--shadow-inner-softer) !important;
+  border: 1px solid rgba(200,170,150,.2) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  display: inline-flex !important;
+  margin: 0 auto !important;
+}
+body.dark .softer-mode-toggle-wrap, body.dark .softer-top-tabs, body.dark .softer-tab-bar {
+  background: rgba(38,32,28,.9) !important;
+  border-color: rgba(255,255,255,.08) !important;
+}
+
+/* ── 5. STREAK CIRCLE: Premium empty state ── */
+.softer-streak-circle, .streak-number-wrap, .softer-streak-number {
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--primary, #b87c6c) 18%, rgba(255,253,250,.95)),
+    rgba(255,253,250,.9)) !important;
+  border: 2px solid color-mix(in srgb, var(--primary, #b87c6c) 25%, rgba(200,170,150,.35)) !important;
+  box-shadow:
+    0 8px 28px color-mix(in srgb, var(--primary, #b87c6c) 14%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+body.dark .softer-streak-circle, body.dark .streak-number-wrap {
+  background: linear-gradient(145deg,
+    color-mix(in srgb, var(--primary, #b87c6c) 22%, rgba(38,32,28,.95)),
+    rgba(38,32,28,.9)) !important;
+  border-color: color-mix(in srgb, var(--primary, #b87c6c) 28%, rgba(255,255,255,.1)) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+
+/* ── 6. MOOD BAR CHART: Better empty state ── */
+.mood-bar, .softer-mood-bar {
+  border-radius: 6px 6px 2px 2px !important;
+  min-height: 4px !important;
+  transition: height 400ms cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+.mood-bar-track, .softer-mood-bar-track {
+  background: color-mix(in srgb, var(--border, rgba(200,170,150,.2)) 50%, transparent) !important;
+  border-radius: 8px !important;
+}
+
+/* ── 7. BOTTOM NAV: Fix 320px compression ── */
+.softer-bottom-nav, nav.bottom-nav {
+  box-shadow: 0 -8px 32px rgba(120,80,60,.1), inset 0 1px 0 rgba(255,255,255,.6) !important;
+}
+body.dark .softer-bottom-nav, body.dark nav.bottom-nav {
+  box-shadow: 0 -8px 32px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+.softer-nav-btn, nav.bottom-nav button {
+  font-size: 10.5px !important;
+  font-weight: 600 !important;
+  transition: color 150ms ease, background 150ms ease, transform 120ms ease !important;
+  border-radius: 12px !important;
+}
+@media (max-width: 360px) {
+  .softer-nav-btn span:not([aria-hidden]),
+  nav.bottom-nav button span:not(.nav-icon):not([aria-hidden]) {
+    display: none !important;
+  }
+  .softer-nav-btn, nav.bottom-nav button {
+    font-size: 0 !important;
+    padding: 10px 4px !important;
+  }
+}
+
+/* ── 8. SECTION HEADERS ── */
+.softer-section-kicker, .today-section-label, [class*="kicker"] {
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  opacity: 0.75 !important;
+}
+
+/* ── 9. RITUAL BUBBLES: Premium feel ── */
+.ritual-chip, .softer-ritual-chip, .ritual-card-mini {
+  border-radius: 18px !important;
+  box-shadow: var(--shadow-card-softer), var(--shadow-inner-softer) !important;
+  border: 1px solid rgba(200,170,150,.2) !important;
+  transition: transform 150ms ease, box-shadow 150ms ease !important;
+}
+@media (hover: hover) {
+  .ritual-chip:hover, .softer-ritual-chip:hover {
+    transform: scale(1.04) translateY(-1px) !important;
+    box-shadow: var(--shadow-elevated-softer) !important;
+  }
+}
+
+/* ── 10. PRIMARY BUTTONS ── */
+.soft-btn, .cta-xl, .cta-primary-dom, button.primary {
+  border-radius: 16px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  transition: transform 140ms ease, box-shadow 170ms ease !important;
+}
+.soft-btn:active, .cta-xl:active, .cta-primary-dom:active {
+  transform: scale(0.97) !important;
+}
+
+/* ── 11. INPUTS ── */
+input[type="text"], input[type="number"], select, textarea {
+  border-radius: 12px !important;
+  border-width: 1.5px !important;
+  transition: border-color 180ms ease, box-shadow 180ms ease !important;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary, #b87c6c) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary, #b87c6c) 15%, transparent) !important;
+  outline: none !important;
+}
+
+/* ── 12. CARD ENTRY ANIMATION ── */
+@keyframes softer-card-in {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to   { opacity: 1; transform: none; }
+}
+.card, article.card {
+  animation: softer-card-in 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .card, article.card { animation: none !important; }
+}
+
+/* ── 13. JOURNAL WEEK CHART ── */
+.softer-week-bar-wrap, .week-bar-column {
+  gap: 4px !important;
+  align-items: flex-end !important;
+}
+.week-bar-day-label {
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  opacity: 0.6 !important;
+}
+
+/* ── 14. RESET CARDS ── */
+.softer-quick-reset-card, .softer-reset-card {
+  border-radius: 22px !important;
+  box-shadow: var(--shadow-elevated-softer), var(--shadow-inner-softer) !important;
+}
+
+/* ── 15. PRIORITY ITEMS ── */
+.softer-priority-item, .priority-card {
+  border-radius: 16px !important;
+  transition: transform 150ms ease, box-shadow 150ms ease !important;
+}
+
+/* ── 16. BODY CANVAS: Subtle warm gradient ── */
+body:not(.dark) {
+  background: radial-gradient(
+    ellipse 120% 60% at 50% -10%,
+    rgba(255,240,230,.65) 0%,
+    transparent 55%
+  ), var(--canvas, #FDFCFB) !important;
+}
+
+/* ── 17. PILLS & TAGS ── */
+.pill, .tag, .chip {
+  border-radius: 999px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+}
+
+/* ── 18. DESKTOP LAYOUT: Ensure content visible without overlay ── */
+@media (min-width: 768px) {
+  .etsy-install-hint { display: none !important; }
+}
+</style>
 <script>
 (function () {
   var btn = document.getElementById('todayDetailToggle');
@@ -12706,6 +12938,312 @@ body.theme-dark [style*="background: #fff"] {
   }
   if (document.readyState === "complete") reveal();
   else window.addEventListener("load", reveal, { once: true });
+})();
+</script>
+
+<style id="softer-system-v3">
+/* ── Phase 4+5: Softer premium depth & micro-interactions ── */
+
+/* CRITICAL: PWA install modal hidden on all non-mobile screens (belt+suspenders) */
+@media (min-width: 600px) {
+  #premiumPwaWelcome,
+  .pwa-welcome-overlay,
+  .etsy-install-hint { display: none !important; }
+}
+
+/* Today hero card: stronger depth separation in both modes */
+.today-hero-card, #todayHeroStrip {
+  box-shadow:
+    0 16px 48px rgba(0,0,0,.09),
+    0 2px 8px rgba(0,0,0,.05),
+    inset 0 1px 0 rgba(255,255,255,.88) !important;
+  border: 1px solid rgba(200,182,170,.35) !important;
+}
+body.dark .today-hero-card,
+body.dark #todayHeroStrip,
+body.theme-dark .today-hero-card,
+html.dark body .today-hero-card {
+  /* Lift card noticeably above dark canvas */
+  background: linear-gradient(145deg,
+    rgba(52,46,40,.97) 0%,
+    rgba(44,39,34,.94) 60%,
+    rgba(48,44,42,.93) 100%) !important;
+  border-color: rgba(212,163,115,.18) !important;
+  box-shadow:
+    0 16px 48px rgba(0,0,0,.38),
+    0 2px 8px rgba(0,0,0,.20),
+    inset 0 1px 0 rgba(255,255,255,.07) !important;
+}
+
+/* All cards dark mode: lift them off the canvas */
+body.dark :where(.card, .soft-card, .metric-card, .dash-next-step-card,
+  .task-item, .today-tasks-card, .journal-entry, .gratitude-card,
+  .softer-luxe-hero, .home-rhythm-card, .softer-energy-card,
+  .softer-reset-card, .softer-feeling-card),
+html.dark body :where(.card, .soft-card, .metric-card, .dash-next-step-card,
+  .task-item, .today-tasks-card, .journal-entry, .gratitude-card,
+  .softer-luxe-hero, .home-rhythm-card, .softer-energy-card,
+  .softer-reset-card, .softer-feeling-card) {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(217,160,136,.08), transparent 38%),
+    linear-gradient(145deg, rgba(52,46,40,.96), rgba(42,37,33,.94)) !important;
+  box-shadow:
+    0 4px 18px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.05) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+
+/* Rhythm ring: premium glow halo */
+.rhythm-ring, #todayHeroRingMount .rhythm-ring {
+  filter: drop-shadow(0 8px 22px rgba(186,150,130,.18)) !important;
+  transition: filter 300ms ease !important;
+}
+body.dark .rhythm-ring {
+  filter: drop-shadow(0 8px 22px rgba(186,150,130,.12)) !important;
+}
+
+/* Mode toggle pill (Mini reset / Personalize): stronger frosted glass */
+.softer-mode-toggle-wrap, .softer-top-tabs,
+[class*="mode-toggle"], [class*="top-tab"] {
+  backdrop-filter: blur(16px) saturate(1.4) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.4) !important;
+  background: rgba(255,253,250,.88) !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06), inset 0 1px 0 rgba(255,255,255,.9) !important;
+  border-radius: 999px !important;
+}
+body.dark .softer-mode-toggle-wrap,
+body.dark .softer-top-tabs,
+html.dark body [class*="mode-toggle"] {
+  background: rgba(52,46,40,.85) !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+
+/* Active tab inside toggle: warmer pill */
+.softer-mode-toggle-wrap .active,
+.softer-top-tabs .active,
+[class*="mode-toggle"] [class*="active"] {
+  box-shadow: 0 2px 8px rgba(186,130,100,.22), inset 0 1px 0 rgba(255,255,255,.6) !important;
+}
+
+/* Streak circle: elevated presence (not a placeholder) */
+.softer-streak-circle, [class*="streak-circle"] {
+  box-shadow:
+    0 8px 28px color-mix(in srgb, var(--primary, #c07a5c) 14%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.7) !important;
+  border: 2px solid color-mix(in srgb, var(--primary, #c07a5c) 22%, transparent) !important;
+}
+/* Streak count: prominent even when 0 */
+.softer-streak-circle .streak-num,
+[class*="streak-circle"] [class*="streak-num"],
+[class*="streak-count"] {
+  font-size: clamp(2rem, 8vw, 2.6rem) !important;
+  font-weight: 700 !important;
+  color: var(--primary, #c07a5c) !important;
+  opacity: 1 !important;
+}
+
+/* Primary actions: press + glow */
+button[class*="primary"], .btn-primary,
+.softer-cta, [class*="softer-btn"]:not([class*="secondary"]) {
+  transition: transform 140ms cubic-bezier(0.22,1,0.36,1), box-shadow 160ms ease !important;
+  box-shadow: 0 6px 20px rgba(186,130,100,.28), inset 0 1px 0 rgba(255,255,255,.18) !important;
+}
+button[class*="primary"]:active, .softer-cta:active {
+  transform: scale(0.97) !important;
+  box-shadow: 0 2px 8px rgba(186,130,100,.18) !important;
+}
+@media (hover: hover) {
+  button[class*="primary"]:hover, .softer-cta:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 10px 28px rgba(186,130,100,.34), inset 0 1px 0 rgba(255,255,255,.24) !important;
+  }
+}
+
+/* Ritual chips: spring tap */
+.ritual-quick-chip, [class*="ritual-chip"] {
+  transition: transform 180ms cubic-bezier(0.34,1.56,0.64,1), box-shadow 160ms ease !important;
+}
+.ritual-quick-chip:active, [class*="ritual-chip"]:active {
+  transform: scale(0.94) !important;
+}
+
+/* Nav: subtle underline indicator instead of heavy line */
+nav.bottom-nav button.active,
+.softer-nav-btn.active,
+[class*="nav-btn"].active {
+  background: color-mix(in srgb, var(--primary, #c07a5c) 12%, transparent) !important;
+  border-radius: 12px !important;
+}
+
+/* Light mode canvas: warm radial glow at top */
+body:not(.dark):not(.theme-dark) {
+  background:
+    radial-gradient(ellipse 100% 45% at 50% 0%,
+      rgba(255,230,215,.55) 0%, transparent 60%),
+    var(--canvas, #faf8f6) !important;
+}
+
+/* Desktop: comfortable max-width for content column */
+@media (min-width: 1024px) {
+  .view-content, .softer-view, [class*="view-today"],
+  [class*="view-home"], [class*="view-rituals"], [class*="view-journal"] {
+    max-width: min(700px, 100%) !important;
+    margin-inline: auto !important;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .rhythm-ring, button, .ritual-quick-chip, .card { transition: none !important; }
+}
+</style>
+
+<style id="softer-fix-v4">
+/* ── SOFTER FIX v4: Audit-Driven Execution Pass ── */
+
+/* FIX CRITICAL: Entry gate blocks all desktop/tablet screens — CSS hide */
+@media (min-width: 600px) {
+  #softerEntryGate,
+  .softer-entry-gate {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+  /* Ensure shell is never blocked by gate JS logic */
+  #appShell {
+    pointer-events: auto !important;
+    aria-hidden: unset;
+  }
+}
+
+/* FIX CRITICAL: Dark mode canvas — ensure truly dark on all surfaces */
+body.dark,
+html.dark body {
+  --canvas: #1e1a17 !important;
+  --surface: #28231f !important;
+  --card: #2a2420 !important;
+  --border: rgba(255,255,255,0.07) !important;
+  background:
+    radial-gradient(ellipse 60% 25% at 12% 0%, rgba(212,163,115,0.07), transparent 50%),
+    radial-gradient(ellipse 40% 20% at 88% 10%, rgba(124,138,113,0.05), transparent 50%),
+    linear-gradient(180deg, #1e1a17 0%, #221e1b 50%, #191512 100%) !important;
+  color: var(--text) !important;
+}
+body.dark .card,
+body.dark article.card,
+body.dark .soft-card,
+body.dark .metric-card,
+html.dark body .card,
+html.dark body .soft-card {
+  background: #2a2420 !important;
+  border-color: rgba(255,255,255,0.07) !important;
+}
+body.dark .sidebar,
+html.dark body .sidebar {
+  background: linear-gradient(180deg, #211e1b 0%, #1c1916 100%) !important;
+  border-right-color: rgba(255,255,255,0.06) !important;
+}
+body.dark .today-hero-card,
+body.dark #todayHeroStrip,
+html.dark body .today-hero-card {
+  background: linear-gradient(145deg, #302822 0%, #241f1b 100%) !important;
+  border-color: rgba(212,163,115,0.18) !important;
+}
+
+/* FIX HIGH: Room name word-break — "Kitchen" breaks mid-word */
+.room-name, .room-label, .room-title,
+[class*="room"] > h3, [class*="room"] > h4,
+[class*="room-card"] h3, [class*="room-card"] h4 {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  word-break: normal !important;
+  hyphens: none !important;
+  max-width: 100% !important;
+}
+
+/* FIX HIGH: Ritual chip row — right fade gradient signals scrollability */
+.ritual-scroll-row,
+.ritual-quick-chip-row,
+[class*="ritual-chip-row"],
+[class*="chip-scroll"] {
+  position: relative !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: none !important;
+  scroll-snap-type: x proximity !important;
+}
+.ritual-scroll-row::-webkit-scrollbar,
+.ritual-quick-chip-row::-webkit-scrollbar { display: none !important; }
+.ritual-scroll-row::after,
+.ritual-quick-chip-row::after {
+  content: '' !important;
+  position: sticky !important;
+  right: 0 !important;
+  top: 0 !important;
+  width: 52px !important;
+  flex-shrink: 0 !important;
+  align-self: stretch !important;
+  background: linear-gradient(to right, transparent, var(--bg, #f8f6f3) 85%) !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+  display: block !important;
+}
+body.dark .ritual-scroll-row::after,
+body.dark .ritual-quick-chip-row::after,
+html.dark body .ritual-scroll-row::after {
+  background: linear-gradient(to right, transparent, var(--bg, #1e1a17) 85%) !important;
+}
+
+/* FIX HIGH: Mood bars — minimum visible height for zero-value days */
+.mood-bar,
+.softer-mood-bar,
+[class*="mood-bar"]:not([class*="wrap"]) {
+  min-height: 4px !important;
+}
+/* Empty/zero days: subtle presence instead of invisible */
+.mood-bar-wrap:not(:has(.mood-bar.high)):not(:has(.mood-bar.mid)) .mood-bar,
+.mood-bar[style*="height: 0"],
+.mood-bar[style*="height:0"] {
+  opacity: 0.25 !important;
+  background: var(--muted, #a89990) !important;
+}
+
+/* FIX HIGH: Streak ring glow — hero depth */
+.softer-streak-circle, .streak-number-wrap,
+.softer-streak-ring, [class*="streak-circle"] {
+  filter: drop-shadow(0 12px 36px rgba(186,150,130,0.2)) !important;
+}
+
+/* PREMIUM: Breathwork circle tactile depth */
+.breathe-circle, .breath-orb, .breathwork-circle,
+[class*="breathe-circle"], [class*="breath-orb"] {
+  box-shadow:
+    0 16px 48px rgba(160,120,110,0.18),
+    0 4px 16px rgba(160,120,110,0.12),
+    inset 0 2px 0 rgba(255,255,255,0.28) !important;
+}
+body.dark .breathe-circle,
+html.dark body [class*="breathe-circle"] {
+  box-shadow:
+    0 16px 48px rgba(0,0,0,0.35),
+    inset 0 2px 0 rgba(255,255,255,0.08) !important;
+}
+
+/* Extended reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #softerEntryGate, .softer-entry-gate { transition: none !important; }
+}
+</style>
+
+<script>
+/* Softer fix: skip entry gate on desktop — set key before initSofterEntryGate() runs */
+(function() {
+  try {
+    if (window.innerWidth >= 600 && !localStorage.getItem("softerEntryMoodV1")) {
+      localStorage.setItem("softerEntryMoodV1", "calm");
+    }
+  } catch(e) {}
 })();
 </script>
 
