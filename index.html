@@ -4393,8 +4393,10 @@ body {
     #view-today > .stack > .start-here-banner { order: 1; }
     #view-today > .stack > #softer-first-use-hint { order: 2; }
     #view-today > .stack > .softer-luxe-hero { order: 3; }
-    #view-today > .stack > .today-dash-split { order: 4; }
-    #view-today > .stack > .softer-atmosphere-cluster { order: 5; }
+    /* Mobile regression fix: keep Emotional Weather near the top.
+       Moving `.softer-atmosphere-cluster` after the full dashboard stack creates huge blank space on fold. */
+    #view-today > .stack > .softer-atmosphere-cluster { order: 4; }
+    #view-today > .stack > .today-dash-split { order: 5; }
     .lux-emotional-hook--desktop { display: none !important; }
   }
   @media (min-width: 901px) {
@@ -12184,6 +12186,19 @@ body.theme-dark [style*="background: #fff"] {
         const archiveBtn = el("gratitudeArchiveBtn");
         if(!overlay) return;
 
+        // Visual QA / screenshot mode should never be blocked by modal overlays.
+        // This does not change real-user behavior (only affects capture / review runs).
+        try {
+          const qs = new URLSearchParams(location.search);
+          const isScreenshot = qs.has("screenshot");
+          const isVisualReview = localStorage.getItem("visualReviewMode") === "true";
+          if (isScreenshot || isVisualReview) {
+            overlay.classList.remove("show");
+            overlay.setAttribute("aria-hidden","true");
+            return;
+          }
+        } catch (_) {}
+
         if(titleEl) titleEl.textContent = greeting;
 
         const data = loadGrat();
@@ -12597,9 +12612,10 @@ body.theme-dark [style*="background: #fff"] {
     #view-today .stack > .start-here-banner { order: 1; }
     #view-today .stack > #softer-first-use-hint { order: 2; }
     #view-today .stack > #dashHeroPersonal { order: 3; }
-    #view-today .stack > #softerTakeActionWrap { order: 4; }
-    #view-today .stack > #softerAtmosphereCluster { order: 5; }
-    #view-today .stack > #todayDashSplit { order: 6; }
+    /* Mobile rhythm: keep Emotional Weather visible on fold. */
+    #view-today .stack > #softerAtmosphereCluster { order: 4; }
+    #view-today .stack > #todayDashSplit { order: 5; }
+    #view-today .stack > #softerTakeActionWrap { order: 6; }
     #view-today .stack > #dayClosureStrip { order: 7; }
     #view-today .stack > #resumeCard { order: 8; }
     #view-today .stack > .mental-load-card { order: 9; }
