@@ -13252,6 +13252,1788 @@ html.dark body [class*="breathe-circle"] {
 }
 </style>
 
+<style id="softer-reconstruction-v1">
+/*
+  ══════════════════════════════════════════════════════════════
+  SOFTER — RECONSTRUCTION v1  (2026-05-06)
+  Premium Wellness — Complete Foundation System
+  ──────────────────────────────────────────────────────────────
+  Architecture: Tokens → Canvas → Shell → Header → Hero →
+                Cards → Nav → Forms → Onboarding → Responsive
+  Supersedes: all 17+ patch blocks above.
+  ══════════════════════════════════════════════════════════════
+*/
+
+/* ══ S1. DESIGN TOKENS ═══════════════════════════════════════ */
+:root {
+  /* Spacing rhythm (4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 56 / 72) */
+  --s-1:  4px;   --s-2:  8px;   --s-3:  12px;
+  --s-4:  16px;  --s-5:  20px;  --s-6:  24px;
+  --s-8:  32px;  --s-10: 40px;  --s-14: 56px;  --s-18: 72px;
+
+  /* Radius */
+  --rr-xs:   8px;  --rr-sm:  12px;  --rr-base: 16px;
+  --rr-md:  20px;  --rr-lg:  24px;  --rr-xl:  28px;
+  --rr-2xl: 32px;  --rr-full: 999px;
+
+  /* Elevation — soft, premium */
+  --es-xs: 0 1px 2px rgba(73,55,38,.04);
+  --es-sm: 0 2px 6px rgba(73,55,38,.05), 0 1px 2px rgba(73,55,38,.04);
+  --es-md: 0 6px 18px rgba(73,55,38,.06), 0 2px 6px rgba(73,55,38,.04),
+           inset 0 1px 0 rgba(255,255,255,.85);
+  --es-lg: 0 14px 32px rgba(73,55,38,.09), 0 4px 12px rgba(73,55,38,.05),
+           inset 0 1px 0 rgba(255,255,255,.9);
+  --es-hero: 0 24px 56px rgba(73,55,38,.10), 0 8px 20px rgba(73,55,38,.06),
+             inset 0 1.5px 0 rgba(255,255,255,.9);
+  --es-float: 0 28px 64px rgba(73,55,38,.13);
+
+  /* Typography */
+  --ff-serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --ff-ui:    "DM Sans", "Inter", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Font scale */
+  --tf-2xs: 10px;  --tf-xs:  11px;  --tf-sm:  12px;
+  --tf-base: 13px; --tf-md:  14px;  --tf-lg:  15px;
+  --tf-xl:   17px; --tf-2xl: 20px;  --tf-3xl: 24px;
+  --tf-4xl:  30px; --tf-5xl: 38px;
+
+  /* Brand surfaces */
+  --rec-bg:    #fcfaf6;
+  --rec-card:  #ffffff;
+  --rec-border: rgba(212,163,115,0.18);
+}
+
+/* ══ S2. BASE RESET + CANVAS ═════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box !important; }
+* { min-width: 0 !important; }
+svg, img, video, canvas, iframe { min-width: auto !important; }
+html { overflow-x: hidden !important; }
+body {
+  overflow-x:               hidden !important;
+  font-family:              var(--ff-ui) !important;
+  -webkit-font-smoothing:   antialiased !important;
+  -moz-osx-font-smoothing:  grayscale !important;
+  -webkit-text-size-adjust: 100% !important;
+}
+
+/* ══ S3. LIGHT MODE CANVAS — warm cream gradient ════════════ */
+body:not(.dark) {
+  background:
+    radial-gradient(ellipse 70% 48% at 88% 0%,
+      rgba(212,163,115,0.12), transparent 58%),
+    radial-gradient(ellipse 50% 38% at 8% 100%,
+      rgba(166,123,150,0.08), transparent 52%),
+    linear-gradient(175deg, #fdfbf7 0%, #faf6f0 50%, #fcfaf5 100%) !important;
+}
+
+/* ══ S4. DARK MODE — rich charcoal warmth ═══════════════════ */
+body.dark {
+  --bg:          #15120f !important;
+  --surface:     #1d1916 !important;
+  --surface-soft:#1a1714 !important;
+  --surface-card:#221d19 !important;
+  --card:        #221d19 !important;
+  --text:        #f5efe7 !important;
+  --muted:       #a39487 !important;
+  --border:      rgba(255,255,255,.06) !important;
+  background:
+    radial-gradient(ellipse 65% 40% at 80% 0%,
+      rgba(212,163,115,0.10), transparent 52%),
+    radial-gradient(ellipse 45% 30% at 15% 95%,
+      rgba(166,123,150,0.07), transparent 48%),
+    linear-gradient(175deg, #15120f 0%, #1a1612 50%, #14110e 100%) !important;
+}
+body.dark .card,
+body.dark article.card {
+  background:   var(--card) !important;
+  border-color: rgba(255,255,255,.06) !important;
+  box-shadow:   0 6px 22px rgba(0,0,0,.4),
+                inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+body.dark .bottom-nav,
+body.dark nav.bottom-nav {
+  background:        rgba(20,17,14,.96) !important;
+  border-top-color:  rgba(255,255,255,.06) !important;
+  box-shadow:        0 -8px 28px rgba(0,0,0,.5),
+                     inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+body.dark select,
+body.dark input[type="text"],
+body.dark input[type="number"],
+body.dark textarea {
+  background:   rgba(34,29,25,.92) !important;
+  border-color: rgba(255,255,255,.10) !important;
+  color:        var(--text) !important;
+}
+
+/* ══ S5. APP SHELL ═══════════════════════════════════════════ */
+.app-shell {
+  max-width:      1180px !important;
+  margin:         0 auto !important;
+  padding-top:    var(--s-5) !important;
+  padding-right:  var(--s-4) !important;
+  padding-bottom: calc(110px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-left:   var(--s-4) !important;
+}
+@media (max-width: 767px) {
+  .app-shell {
+    padding-top:    var(--s-3) !important;
+    padding-left:   var(--s-3) !important;
+    padding-right:  var(--s-3) !important;
+    padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+@media (max-width: 359px) {
+  .app-shell { padding-left: 12px !important; padding-right: 12px !important; }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .app-shell {
+    padding-left:  88px !important;
+    padding-right: var(--s-6) !important;
+  }
+}
+
+main {
+  display:        flex !important;
+  flex-direction: column !important;
+  gap:            var(--s-4) !important;
+  width:          100% !important;
+}
+@media (min-width: 768px) {
+  main { gap: var(--s-5) !important; }
+}
+@media (min-width: 1100px) {
+  main { gap: var(--s-6) !important; }
+}
+
+/* ══ S6. VIEW (screen) ═══════════════════════════════════════ */
+.view {
+  display:        none !important;
+  flex-direction: column !important;
+  gap:            var(--s-4) !important;
+}
+.view.active {
+  display:        flex !important;
+}
+@media (min-width: 768px) {
+  .view.active { gap: var(--s-5) !important; }
+}
+
+/* ══ S7. TOPBAR ══════════════════════════════════════════════ */
+.topbar {
+  display:        flex !important;
+  align-items:    center !important;
+  justify-content: space-between !important;
+  gap:            var(--s-3) !important;
+  padding:        var(--s-3) var(--s-4) !important;
+  border-radius:  var(--rr-xl) !important;
+  background:     rgba(255,253,250,0.86) !important;
+  border:         1px solid rgba(229,222,210,0.7) !important;
+  box-shadow:     var(--es-md) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+@media (max-width: 767px) {
+  .topbar { padding: 10px var(--s-4) !important; border-radius: var(--rr-lg) !important; }
+}
+body.dark .topbar {
+  background:   rgba(28,24,20,.95) !important;
+  border-color: rgba(255,255,255,.07) !important;
+  box-shadow:   0 8px 32px rgba(0,0,0,.4) !important;
+}
+
+/* ══ S8. CARD SYSTEM ═════════════════════════════════════════ */
+.card,
+article.card,
+.app-card {
+  border-radius: var(--rr-xl) !important;
+  border:        1px solid rgba(220,210,195,.6) !important;
+  background:    rgba(255,253,250,0.92) !important;
+  padding:       var(--s-5) !important;
+  box-shadow:    var(--es-md) !important;
+  transition:    transform 180ms cubic-bezier(0.22,1,0.36,1),
+                 box-shadow 200ms ease !important;
+}
+@media (max-width: 479px) {
+  .card, article.card, .app-card {
+    padding:       18px 16px !important;
+    border-radius: 22px !important;
+  }
+}
+@media (min-width: 768px) {
+  .card, article.card, .app-card {
+    padding:       var(--s-6) !important;
+  }
+}
+@media (hover: hover) {
+  .card:hover, article.card:hover {
+    transform:  translateY(-2px) !important;
+    box-shadow: var(--es-lg) !important;
+  }
+}
+
+/* ══ S9. TODAY HERO CARD ═════════════════════════════════════ */
+.today-hero-card,
+#todayHeroStrip {
+  padding:       clamp(20px, 4.5vw, 30px) !important;
+  border-radius: var(--rr-2xl) !important;
+  background:
+    radial-gradient(ellipse 80% 55% at 8% 6%,
+      rgba(212,163,115,0.15) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 42% at 93% 90%,
+      rgba(166,123,150,0.10) 0%, transparent 48%),
+    linear-gradient(155deg, #fefcf8 0%, #faf6ef 100%) !important;
+  box-shadow:    var(--es-hero) !important;
+  border:        1px solid rgba(212,163,115,.18) !important;
+}
+body.dark .today-hero-card,
+body.dark #todayHeroStrip {
+  background:
+    radial-gradient(ellipse 78% 52% at 10% 8%,
+      rgba(212,163,115,0.18) 0%, transparent 54%),
+    linear-gradient(155deg, #2a221c 0%, #1f1a16 100%) !important;
+  border-color:  rgba(212,163,115,.24) !important;
+  box-shadow:    0 24px 56px rgba(0,0,0,.4),
+                 inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+
+/* Hero greeting (Fraunces italic) */
+#heroGreetLine {
+  font-family:    var(--ff-serif) !important;
+  font-style:     italic !important;
+  font-size:      clamp(20px, 5.2vw, 28px) !important;
+  font-weight:    600 !important;
+  line-height:    1.18 !important;
+  letter-spacing: -0.02em !important;
+  color:          var(--text) !important;
+  margin-bottom:  var(--s-2) !important;
+}
+#heroSubLine {
+  font-size:    var(--tf-md) !important;
+  color:        var(--muted) !important;
+  line-height:  1.5 !important;
+  margin-bottom: var(--s-3) !important;
+}
+
+/* Hero ring */
+.rhythm-ring {
+  width:  clamp(96px, 28vw, 130px) !important;
+  height: clamp(96px, 28vw, 130px) !important;
+  filter: drop-shadow(0 8px 22px rgba(212,163,115,.18)) !important;
+}
+.rhythm-ring .ring-track { stroke: rgba(212,163,115,.16) !important; stroke-width: 9 !important; }
+.rhythm-ring .ring-progress { stroke-width: 9 !important; stroke-linecap: round !important; }
+.rhythm-ring .ring-value {
+  font-family:    var(--ff-serif) !important;
+  font-weight:    700 !important;
+  letter-spacing: -0.04em !important;
+  font-size:      clamp(20px, 5vw, 26px) !important;
+  color:          var(--text) !important;
+}
+body.dark .rhythm-ring .ring-track { stroke: rgba(255,255,255,.08) !important; }
+
+/* Hero stat row */
+#heroStatRow {
+  display:    flex !important;
+  flex-wrap:  wrap !important;
+  gap:        var(--s-2) !important;
+  margin-top: var(--s-2) !important;
+}
+#heroStatRow .chip {
+  font-size:      var(--tf-sm) !important;
+  padding:        4px 10px !important;
+  border-radius:  var(--rr-full) !important;
+  background:     rgba(212,163,115,.10) !important;
+  color:          var(--text) !important;
+  border:         1px solid rgba(212,163,115,.20) !important;
+}
+body.dark #heroStatRow .chip {
+  background:   rgba(212,163,115,.14) !important;
+  border-color: rgba(212,163,115,.22) !important;
+}
+
+/* ══ S10. SECTION HEADINGS / KICKERS ═════════════════════════ */
+.row { gap: var(--s-3) !important; }
+.row > h3,
+.card > h3,
+article > h3 {
+  font-family:    var(--ff-serif) !important;
+  font-style:     italic !important;
+  font-size:      clamp(17px, 4vw, 22px) !important;
+  font-weight:    600 !important;
+  letter-spacing: -0.015em !important;
+  line-height:    1.25 !important;
+  color:          var(--text) !important;
+  margin:         0 !important;
+}
+.card .subtitle,
+article .subtitle {
+  font-size:    var(--tf-md) !important;
+  color:        var(--muted) !important;
+  line-height:  1.5 !important;
+  margin:       4px 0 var(--s-3) !important;
+}
+
+.chip,
+span.chip {
+  font-size:      var(--tf-sm) !important;
+  padding:        4px 10px !important;
+  border-radius:  var(--rr-full) !important;
+  font-weight:    600 !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* ══ S11. ROOM CARDS (Home view) ═════════════════════════════ */
+.room-card,
+[class*="room-row"],
+.room-list-item {
+  border-radius: var(--rr-lg) !important;
+  padding:       14px 16px !important;
+  display:       grid !important;
+  grid-template-columns: auto 1fr auto !important;
+  align-items:   center !important;
+  gap:           var(--s-3) !important;
+  border:        1px solid rgba(220,210,195,.6) !important;
+  background:    rgba(255,253,250,0.84) !important;
+  transition:    transform .12s ease, box-shadow .15s ease !important;
+}
+@media (hover: hover) {
+  .room-card:hover { transform: translateY(-1px); box-shadow: var(--es-sm) !important; }
+}
+.room-card .room-name {
+  font-weight: 600 !important;
+  font-size:   var(--tf-lg) !important;
+  color:       var(--text) !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* ══ S12. BUTTONS ════════════════════════════════════════════ */
+.cta,
+.soft-btn,
+.mini-btn,
+.feel-btn,
+button.btn {
+  font-family:   var(--ff-ui) !important;
+  border-radius: var(--rr-full) !important;
+  font-weight:   600 !important;
+  font-size:     var(--tf-md) !important;
+  letter-spacing: -0.005em !important;
+  transition:    transform .12s ease, box-shadow .15s ease,
+                 background .2s ease, border-color .15s ease !important;
+}
+.cta {
+  background: linear-gradient(135deg, var(--primary) 0%,
+    color-mix(in srgb, var(--primary) 75%, var(--secondary)) 100%) !important;
+  color:      #fff !important;
+  border:     none !important;
+  padding:    12px 22px !important;
+  box-shadow: 0 8px 24px rgba(212,163,115,.28) !important;
+}
+.cta:hover {
+  box-shadow: 0 10px 28px rgba(212,163,115,.36) !important;
+}
+.soft-btn {
+  background:    rgba(255,253,250,0.84) !important;
+  color:         var(--text) !important;
+  border:        1px solid rgba(220,210,195,.7) !important;
+  padding:       10px 18px !important;
+  min-height:    44px !important;
+}
+body.dark .soft-btn {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+.mini-btn {
+  font-size:  var(--tf-sm) !important;
+  padding:    6px 14px !important;
+  min-height: 36px !important;
+}
+
+/* ══ S13. BOTTOM NAVIGATION ══════════════════════════════════ */
+.bottom-nav,
+nav.bottom-nav {
+  background:           rgba(254,251,247,0.96) !important;
+  border-top:           1px solid rgba(220,210,195,.5) !important;
+  backdrop-filter:      blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+  box-shadow:           0 -8px 28px rgba(73,55,38,.07),
+                        inset 0 1px 0 rgba(255,255,255,.95) !important;
+  padding: 4px
+           max(8px, env(safe-area-inset-right, 0px))
+           calc(4px + env(safe-area-inset-bottom, 0px))
+           max(8px, env(safe-area-inset-left, 0px)) !important;
+  display:              flex !important;
+  align-items:          center !important;
+  justify-content:      space-around !important;
+}
+
+.bottom-nav-btn {
+  display:         flex !important;
+  flex-direction:  column !important;
+  align-items:     center !important;
+  justify-content: center !important;
+  gap:             3px !important;
+  font-size:       10px !important;
+  font-weight:     600 !important;
+  letter-spacing:  0.025em !important;
+  color:           var(--muted) !important;
+  padding:         6px 4px 5px !important;
+  border-radius:   14px !important;
+  border:          none !important;
+  background:      transparent !important;
+  cursor:          pointer !important;
+  flex:            1 1 0 !important;
+  min-height:      52px !important;
+  position:        relative !important;
+  transition:      color .14s ease, background .14s ease !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+.bottom-nav-btn.active {
+  color:      var(--primary) !important;
+  background: rgba(212,163,115,.10) !important;
+}
+.bottom-nav-btn.active::before {
+  content:   "";
+  position:  absolute;
+  top:       4px;
+  left:      50%;
+  transform: translateX(-50%);
+  width:     4px; height: 4px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+.bottom-nav-btn.active .bottom-nav-icon svg {
+  transform: scale(1.12) translateY(-1px);
+  filter:    drop-shadow(0 2px 5px rgba(212,163,115,.32));
+}
+.bottom-nav-btn .bottom-nav-icon { display: flex; align-items: center; justify-content: center; }
+.bottom-nav-btn .bottom-nav-icon svg { transition: transform .14s ease; }
+
+body.dark .bottom-nav-btn.active {
+  color:      #e8c19a !important;
+  background: rgba(212,163,115,.14) !important;
+}
+body.dark .bottom-nav-btn.active::before { background: #e8c19a; }
+
+/* ══ S14. FORMS / INPUTS ═════════════════════════════════════ */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+  border-radius: var(--rr-base) !important;
+  border:        1px solid rgba(220,210,195,.65) !important;
+  padding:       11px 14px !important;
+  font-size:     var(--tf-md) !important;
+  font-family:   var(--ff-ui) !important;
+  min-height:    44px !important;
+  background:    rgba(255,253,250,0.85) !important;
+  color:         var(--text) !important;
+  transition:    border-color .14s ease, box-shadow .14s ease !important;
+}
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--primary) !important;
+  box-shadow:   0 0 0 3px rgba(212,163,115,.16) !important;
+  outline:      none !important;
+}
+
+select {
+  appearance:          none !important;
+  -webkit-appearance:  none !important;
+  background-image:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a746d'/%3E%3C/svg%3E") !important;
+  background-repeat:   no-repeat !important;
+  background-position: right 14px center !important;
+  background-size:     9px 5px !important;
+  padding:             10px 38px 10px 14px !important;
+  border-radius:       var(--rr-base) !important;
+  border:              1px solid rgba(220,210,195,.65) !important;
+  font-size:           var(--tf-md) !important;
+  min-height:          44px !important;
+  cursor:              pointer !important;
+  background-color:    rgba(255,253,250,.85) !important;
+}
+body.dark select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23a39487'/%3E%3C/svg%3E") !important;
+}
+
+/* Range slider (energy mood bar) */
+input[type="range"] {
+  accent-color: var(--primary) !important;
+  height:       4px !important;
+  cursor:       pointer !important;
+}
+
+/* ══ S15. PILLS / EMOTION CHIPS ══════════════════════════════ */
+.emotion-row,
+.mood-chip-row {
+  display:    flex !important;
+  flex-wrap:  wrap !important;
+  gap:        var(--s-2) !important;
+  margin-top: var(--s-2) !important;
+}
+.emotion-pill,
+.mood-chip,
+.feel-btn {
+  border-radius:  var(--rr-full) !important;
+  padding:        7px 14px !important;
+  font-size:      var(--tf-md) !important;
+  font-weight:    600 !important;
+  border:         1px solid rgba(220,210,195,.6) !important;
+  background:     rgba(255,253,250,0.84) !important;
+  color:          var(--text) !important;
+  transition:     transform .1s ease, background .14s ease,
+                  border-color .14s ease, box-shadow .14s ease !important;
+  cursor:         pointer !important;
+  min-height:     38px !important;
+}
+.emotion-pill:hover,
+.mood-chip:hover,
+.feel-btn:hover {
+  border-color: var(--primary) !important;
+}
+.emotion-pill.active,
+.mood-chip.active,
+.feel-btn.active,
+.emotion-pill[aria-pressed="true"] {
+  background:   rgba(212,163,115,.16) !important;
+  border-color: var(--primary) !important;
+  color:        #6b3d1a !important;
+  transform:    scale(1.04) !important;
+  box-shadow:   0 0 0 2.5px rgba(212,163,115,.16) !important;
+}
+body.dark .emotion-pill,
+body.dark .mood-chip,
+body.dark .feel-btn {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+body.dark .emotion-pill.active,
+body.dark .mood-chip.active,
+body.dark .feel-btn.active {
+  background: rgba(212,163,115,.20) !important;
+  color:      #f0c6a3 !important;
+}
+
+/* ══ S16. METRICS GRID ═══════════════════════════════════════ */
+.metrics {
+  display:               grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
+  gap:                   var(--s-3) !important;
+}
+.metric-card {
+  padding:       12px 14px !important;
+  border-radius: var(--rr-base) !important;
+  background:    rgba(255,253,250,0.7) !important;
+  border:        1px solid rgba(220,210,195,.5) !important;
+  text-align:    center !important;
+}
+.metric-card h4 {
+  font-size:      10px !important;
+  font-weight:    800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color:          var(--muted) !important;
+  margin:         0 0 6px !important;
+}
+.metric-val {
+  font-family:    var(--ff-serif) !important;
+  font-size:      clamp(20px, 4vw, 26px) !important;
+  font-weight:    700 !important;
+  letter-spacing: -0.04em !important;
+  line-height:    1 !important;
+  color:          var(--text) !important;
+}
+body.dark .metric-card {
+  background:   rgba(34,29,25,.6) !important;
+  border-color: rgba(255,255,255,.06) !important;
+}
+
+/* ══ S17. BREATHWORK WIDGET ══════════════════════════════════ */
+.breathwork-circle,
+.breath-circle,
+[class*="breathwork"][class*="circle"] {
+  width:  120px !important;
+  height: 120px !important;
+  border-radius: 50% !important;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,.6), transparent 36%),
+    linear-gradient(145deg, var(--mauve), var(--rose)) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.4),
+    0 14px 32px rgba(166,123,150,.28) !important;
+  margin: var(--s-3) auto !important;
+}
+
+/* ══ S18. TASK LIST / CHECKLIST ══════════════════════════════ */
+.task-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: var(--s-3) 0 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--s-2) !important;
+}
+.task-list li,
+.task-item {
+  padding: 10px 14px !important;
+  border-radius: var(--rr-base) !important;
+  background: rgba(255,253,250,.6) !important;
+  border: 1px solid rgba(220,210,195,.4) !important;
+  font-size: var(--tf-md) !important;
+  color: var(--text) !important;
+  line-height: 1.45 !important;
+}
+body.dark .task-list li,
+body.dark .task-item {
+  background: rgba(34,29,25,.55) !important;
+  border-color: rgba(255,255,255,.06) !important;
+}
+
+/* ══ S19. MICRO TYPOGRAPHY ═══════════════════════════════════ */
+.deep-note,
+.hint {
+  font-size: var(--tf-sm) !important;
+  color: var(--muted) !important;
+  line-height: 1.55 !important;
+  font-style: italic !important;
+  background: rgba(212,163,115,.06) !important;
+  border-left: 2px solid rgba(212,163,115,.4) !important;
+  padding: 10px 14px !important;
+  border-radius: 0 var(--rr-sm) var(--rr-sm) 0 !important;
+  margin-top: var(--s-3) !important;
+}
+body.dark .deep-note,
+body.dark .hint {
+  background: rgba(212,163,115,.10) !important;
+}
+
+/* ══ S20. ONBOARDING ═════════════════════════════════════════ */
+.onboarding-overlay {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%,
+      rgba(212,163,115,0.18) 0%, transparent 62%),
+    radial-gradient(ellipse 55% 45% at 14% 96%,
+      rgba(166,123,150,0.12) 0%, transparent 55%),
+    linear-gradient(176deg, #fdfaf5 0%, #faf5ee 100%) !important;
+  padding: max(20px, env(safe-area-inset-top))
+           max(20px, env(safe-area-inset-right))
+           max(20px, env(safe-area-inset-bottom))
+           max(20px, env(safe-area-inset-left)) !important;
+}
+body.dark .onboarding-overlay {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%,
+      rgba(212,163,115,0.15) 0%, transparent 62%),
+    linear-gradient(176deg, #15120f 0%, #1a1612 100%) !important;
+}
+.onboarding-card {
+  border-radius: var(--rr-2xl) !important;
+  border:        1px solid rgba(220,210,195,.6) !important;
+  background:    rgba(255,253,250,.96) !important;
+  box-shadow:    0 28px 72px rgba(73,55,38,.14),
+                 0 6px 20px rgba(73,55,38,.08),
+                 inset 0 1px 0 rgba(255,255,255,.92) !important;
+}
+body.dark .onboarding-card {
+  background:   rgba(34,29,25,.96) !important;
+  border-color: rgba(255,255,255,.08) !important;
+  box-shadow:   0 28px 72px rgba(0,0,0,.55),
+                inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+.onboarding-welcome-title {
+  font-family:    var(--ff-serif) !important;
+  font-style:     italic !important;
+  font-weight:    600 !important;
+  font-size:      clamp(24px, 6vw, 34px) !important;
+  letter-spacing: -0.02em !important;
+  line-height:    1.18 !important;
+}
+.onboarding-card h3 {
+  font-family:    var(--ff-serif) !important;
+  font-weight:    600 !important;
+  font-size:      clamp(19px, 4.5vw, 24px) !important;
+  letter-spacing: -0.015em !important;
+  line-height:    1.22 !important;
+}
+.onboarding-dot {
+  width: 9px !important; height: 9px !important;
+  background: rgba(212,163,115,.28) !important;
+}
+.onboarding-dot.active {
+  width: 26px !important; height: 9px !important;
+  border-radius: var(--rr-full) !important;
+  background: var(--primary) !important;
+}
+
+.onboarding-vibe-btn {
+  border-radius: var(--rr-md) !important;
+  padding: 14px 12px !important;
+  font-size: var(--tf-md) !important;
+  font-weight: 600 !important;
+  border: 1px solid rgba(220,210,195,.6) !important;
+  background: rgba(255,253,250,.84) !important;
+  transition: transform .1s ease, border-color .14s ease,
+              background .14s ease !important;
+}
+.onboarding-vibe-btn.active {
+  border: 2px solid var(--primary) !important;
+  background: rgba(212,163,115,.14) !important;
+  transform: scale(1.04) !important;
+  box-shadow: 0 0 0 3px rgba(212,163,115,.14) !important;
+}
+body.dark .onboarding-vibe-btn {
+  background: rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+body.dark .onboarding-vibe-btn.active {
+  background: rgba(212,163,115,.20) !important;
+}
+
+/* ══ S21. WEEKLY HARMONY DONUTS ══════════════════════════════ */
+.mini-donut-row {
+  display: flex !important;
+  gap: var(--s-3) !important;
+  flex-wrap: wrap !important;
+  justify-content: space-between !important;
+  margin-top: var(--s-2) !important;
+}
+
+/* ══ S22. SOFTER ENERGY CARD ═════════════════════════════════ */
+.softer-energy-card {
+  background:
+    linear-gradient(155deg, rgba(255,253,250,.92) 0%,
+      rgba(252,247,239,.84) 100%) !important;
+}
+body.dark .softer-energy-card {
+  background:
+    linear-gradient(155deg, rgba(34,29,25,.92) 0%,
+      rgba(28,24,20,.84) 100%) !important;
+}
+
+/* ══ S23. JOURNAL ENTRIES ════════════════════════════════════ */
+.journal-entry,
+.gratitude-card,
+[class*="journal-card"] {
+  border-radius: var(--rr-lg) !important;
+  padding: var(--s-4) !important;
+  background: rgba(255,253,250,0.8) !important;
+  border: 1px solid rgba(220,210,195,.5) !important;
+}
+body.dark .journal-entry,
+body.dark .gratitude-card {
+  background: rgba(34,29,25,.7) !important;
+  border-color: rgba(255,255,255,.06) !important;
+}
+
+/* ══ S24. RITUALS LIST ═══════════════════════════════════════ */
+.ritual-item,
+[class*="ritual-row"],
+[class*="ritual-card"] {
+  border-radius: var(--rr-lg) !important;
+  padding: 14px 16px !important;
+  background: rgba(255,253,250,0.84) !important;
+  border: 1px solid rgba(220,210,195,.55) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--s-3) !important;
+  transition: transform .12s ease, border-color .14s ease !important;
+}
+.ritual-item:hover,
+[class*="ritual-card"]:hover {
+  border-color: var(--primary) !important;
+}
+body.dark .ritual-item,
+body.dark [class*="ritual-card"] {
+  background: rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+
+/* ══ S25. STREAK / EMOTIONAL WEATHER ═════════════════════════ */
+[id*="streak"],
+.streak-card,
+.emotional-weather-card {
+  background:
+    radial-gradient(ellipse 70% 50% at 14% 12%,
+      rgba(212,163,115,0.10) 0%, transparent 55%),
+    rgba(255,253,250,0.92) !important;
+  border-radius: var(--rr-xl) !important;
+}
+
+/* ══ S26. TYPOGRAPHY POLISH ══════════════════════════════════ */
+h1, h2, h3, h4 {
+  font-family: var(--ff-serif) !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.22 !important;
+}
+h1 { font-size: clamp(26px, 6vw, 36px) !important; font-weight: 700 !important; }
+h2 { font-size: clamp(22px, 5vw, 30px) !important; font-weight: 600 !important; }
+h3 { font-size: clamp(17px, 4vw, 22px) !important; font-weight: 600 !important; font-style: italic !important; }
+h4 { font-size: clamp(13px, 3vw, 15px) !important; font-weight: 700 !important; font-style: normal !important; }
+.subtitle, p { font-family: var(--ff-ui) !important; }
+
+/* ══ S27. DESKTOP / TABLET LAYOUT REFINEMENTS ════════════════ */
+@media (min-width: 900px) {
+  .today-hero-card,
+  #todayHeroStrip {
+    padding: clamp(28px, 3.5vw, 40px) !important;
+  }
+}
+
+/* Tablet 2-column for room cards */
+@media (min-width: 700px) {
+  [id="rooms-list"],
+  .rooms-list,
+  .room-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--s-3) !important;
+  }
+}
+@media (min-width: 1100px) {
+  [id="rooms-list"],
+  .rooms-list,
+  .room-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Hide bottom nav at desktop where side-nav handles it */
+@media (min-width: 1200px) {
+  /* keep bottom nav visible — side-nav is for desktop */
+}
+
+/* ══ S28. FOCUS-VISIBLE ══════════════════════════════════════ */
+:focus-visible {
+  outline:        2px solid var(--primary) !important;
+  outline-offset: 3px !important;
+}
+
+/* ══ S29. MOTION (ENTRANCE) ══════════════════════════════════ */
+@keyframes softer-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.view.active > * {
+  animation: softer-rise 360ms cubic-bezier(0.22,1,0.36,1) both;
+}
+.view.active > *:nth-child(1) { animation-delay: 0ms; }
+.view.active > *:nth-child(2) { animation-delay: 60ms; }
+.view.active > *:nth-child(3) { animation-delay: 110ms; }
+.view.active > *:nth-child(4) { animation-delay: 155ms; }
+.view.active > *:nth-child(5) { animation-delay: 195ms; }
+.view.active > *:nth-child(6) { animation-delay: 230ms; }
+.view.active > *:nth-child(n+7) { animation-delay: 260ms; }
+@media (prefers-reduced-motion: reduce) {
+  .view.active > * { animation: none !important; }
+}
+
+/* ══ S30. COMPACT MOBILE TUNING ══════════════════════════════ */
+@media (max-width: 359px) {
+  .topbar { padding: 8px 12px !important; }
+  .card, article.card { padding: 14px !important; border-radius: 18px !important; }
+  #heroGreetLine { font-size: clamp(17px, 5.5vw, 20px) !important; }
+  .rhythm-ring { width: 88px !important; height: 88px !important; }
+  .bottom-nav-btn { padding: 4px 2px !important; font-size: 9px !important; }
+}
+
+/* ══ S31. PRINT ══════════════════════════════════════════════ */
+@media print {
+  .bottom-nav, .sidebar, .topbar, .toast { display: none !important; }
+  .app-shell { max-width: 100% !important; padding: 0 !important; }
+}
+
+/* ══ S32. DARK MODE — body.theme-dark mirror ════════════════ */
+/* Softer toggles between body.dark AND body.theme-dark — mirror all rules */
+body.theme-dark {
+  --bg:          #15120f !important;
+  --surface:     #1d1916 !important;
+  --surface-soft:#1a1714 !important;
+  --surface-card:#221d19 !important;
+  --card:        #221d19 !important;
+  --text:        #f5efe7 !important;
+  --muted:       #a39487 !important;
+  --border:      rgba(255,255,255,.06) !important;
+  background:
+    radial-gradient(ellipse 65% 40% at 80% 0%,
+      rgba(212,163,115,0.10), transparent 52%),
+    radial-gradient(ellipse 45% 30% at 15% 95%,
+      rgba(166,123,150,0.07), transparent 48%),
+    linear-gradient(175deg, #15120f 0%, #1a1612 50%, #14110e 100%) !important;
+}
+body.theme-dark .card,
+body.theme-dark article.card {
+  background:   var(--card) !important;
+  border-color: rgba(255,255,255,.06) !important;
+  box-shadow:   0 6px 22px rgba(0,0,0,.4),
+                inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+body.theme-dark .topbar {
+  background:   rgba(28,24,20,.95) !important;
+  border-color: rgba(255,255,255,.07) !important;
+  box-shadow:   0 8px 32px rgba(0,0,0,.4) !important;
+}
+body.theme-dark .today-hero-card,
+body.theme-dark #todayHeroStrip {
+  background:
+    radial-gradient(ellipse 78% 52% at 10% 8%,
+      rgba(212,163,115,0.18) 0%, transparent 54%),
+    linear-gradient(155deg, #2a221c 0%, #1f1a16 100%) !important;
+  border-color:  rgba(212,163,115,.24) !important;
+  box-shadow:    0 24px 56px rgba(0,0,0,.4),
+                 inset 0 1px 0 rgba(255,255,255,.06) !important;
+}
+body.theme-dark .bottom-nav,
+body.theme-dark nav.bottom-nav {
+  background:        rgba(20,17,14,.96) !important;
+  border-top-color:  rgba(255,255,255,.06) !important;
+  box-shadow:        0 -8px 28px rgba(0,0,0,.5),
+                     inset 0 1px 0 rgba(255,255,255,.04) !important;
+}
+body.theme-dark .bottom-nav-btn.active {
+  color:      #e8c19a !important;
+  background: rgba(212,163,115,.14) !important;
+}
+body.theme-dark .bottom-nav-btn.active::before { background: #e8c19a !important; }
+body.theme-dark .rhythm-ring .ring-track { stroke: rgba(255,255,255,.08) !important; }
+body.theme-dark select,
+body.theme-dark input[type="text"],
+body.theme-dark input[type="number"],
+body.theme-dark textarea {
+  background:   rgba(34,29,25,.92) !important;
+  border-color: rgba(255,255,255,.10) !important;
+  color:        var(--text) !important;
+}
+body.theme-dark .emotion-pill,
+body.theme-dark .mood-chip,
+body.theme-dark .feel-btn {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.10) !important;
+  color:        var(--text) !important;
+}
+body.theme-dark .emotion-pill.active,
+body.theme-dark .mood-chip.active,
+body.theme-dark .feel-btn.active {
+  background: rgba(212,163,115,.20) !important;
+  color:      #f0c6a3 !important;
+}
+body.theme-dark .softer-energy-card {
+  background: linear-gradient(155deg, rgba(34,29,25,.92) 0%, rgba(28,24,20,.84) 100%) !important;
+}
+body.theme-dark .room-card,
+body.theme-dark [class*="room-row"],
+body.theme-dark .ritual-item,
+body.theme-dark [class*="ritual-card"],
+body.theme-dark .journal-entry,
+body.theme-dark .gratitude-card {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+body.theme-dark .deep-note,
+body.theme-dark .hint {
+  background: rgba(212,163,115,.10) !important;
+}
+body.theme-dark .metric-card {
+  background:   rgba(34,29,25,.6) !important;
+  border-color: rgba(255,255,255,.06) !important;
+}
+body.theme-dark .onboarding-overlay {
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%,
+      rgba(212,163,115,0.15) 0%, transparent 62%),
+    linear-gradient(176deg, #15120f 0%, #1a1612 100%) !important;
+}
+body.theme-dark .onboarding-card {
+  background:   rgba(34,29,25,.96) !important;
+  border-color: rgba(255,255,255,.08) !important;
+  box-shadow:   0 28px 72px rgba(0,0,0,.55),
+                inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+body.theme-dark .onboarding-vibe-btn {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+body.theme-dark .onboarding-vibe-btn.active {
+  background: rgba(212,163,115,.20) !important;
+}
+
+</style>
+
+<style id="softer-polish-v1">
+/*
+  ══════════════════════════════════════════════════════════════
+  SOFTER — PRECISION POLISH v1  (2026-05-06)
+  Post-Reconstruction Precision Refinement — 32 sections
+  ──────────────────────────────────────────────────────────────
+  Scope: micro visual QA across all 5 views, 6 devices, light/dark
+  Strategy: non-destructive, !important cascade, full rollback safe
+  ══════════════════════════════════════════════════════════════
+*/
+
+/* ══ P1. CRITICAL LAYOUT FIX — flex:1 1 280px override ══════ */
+/*
+  An old patch block sets flex:1 1 280px on :is(.quick-action-strip,.stack)>*
+  causing every flex child in the stack to stretch to 280px height minimum,
+  creating giant empty gaps throughout the Today view.
+  Fix: reset to flex:none so children size to their content height.
+*/
+:is(.quick-action-strip, .stack) > * {
+  flex: none !important;
+  min-height: 0 !important;
+}
+/* Force block on article/div children of today-dash-main
+   — some old rule leaves them as display:inline */
+#todayHeroStrip,
+#miniDonutHost,
+.today-dash-main > article,
+.today-dash-main > div,
+.today-dash-main > button {
+  display: block !important;
+}
+
+/* ══ P2. HERO SECTION — mobile compression ═══════════════════ */
+/*
+  softer-luxe-hero stacks ring + all copy text in column on mobile.
+  Reduce padding, compress ring, de-emphasize secondary text.
+*/
+@media (max-width: 760px) {
+  .softer-luxe-hero {
+    padding: 20px 18px 22px !important;
+    gap: 14px !important;
+  }
+  .softer-rhythm-panel { margin-bottom: 0 !important; }
+  .home-rhythm-donut {
+    width:  clamp(130px, 40vw, 168px) !important;
+    height: clamp(130px, 40vw, 168px) !important;
+  }
+  .home-rhythm-donut svg {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .softer-hero-reassurance {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    opacity: 0.72 !important;
+    margin-top: 0 !important;
+  }
+  .softer-hero-privacy {
+    font-size: 11px !important;
+    opacity: 0.48 !important;
+    margin-top: 2px !important;
+    line-height: 1.4 !important;
+  }
+  .day-rhythm-row { margin-top: 6px !important; }
+  .day-rhythm-chips { gap: var(--s-2) !important; flex-wrap: wrap !important; }
+}
+/* Hide reassurance text on very small screens to reduce hero height */
+@media (max-width: 359px) {
+  .softer-hero-reassurance { display: none !important; }
+  .softer-hero-privacy { display: none !important; }
+  .home-rhythm-donut { width: 110px !important; height: 110px !important; }
+}
+
+/* ══ P3. HERO TYPOGRAPHY ══════════════════════════════════════ */
+.softer-hero-kicker {
+  font-size:      10px !important;
+  font-weight:    800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color:          var(--muted) !important;
+  margin-bottom:  var(--s-2) !important;
+}
+.dash-hero-heading,
+#dashHeroHeading {
+  font-family:    var(--ff-serif) !important;
+  font-style:     italic !important;
+  font-size:      clamp(22px, 5.6vw, 30px) !important;
+  font-weight:    600 !important;
+  letter-spacing: -0.022em !important;
+  line-height:    1.18 !important;
+  margin:         0 0 6px !important;
+  color:          var(--text) !important;
+}
+.dash-hero-sub,
+#dashHeroSub {
+  font-size:    var(--tf-md) !important;
+  line-height:  1.5 !important;
+  color:        var(--muted) !important;
+  margin:       0 0 8px !important;
+}
+.softer-hero-reassurance {
+  font-size:  var(--tf-sm) !important;
+  color:      var(--muted) !important;
+  line-height: 1.5 !important;
+  font-style: italic !important;
+  opacity:    0.82 !important;
+}
+.softer-hero-privacy {
+  font-size:  11px !important;
+  color:      var(--muted) !important;
+  opacity:    0.5 !important;
+  line-height: 1.4 !important;
+  margin-top: 4px !important;
+}
+.softer-hero-cta {
+  display:       inline-flex !important;
+  align-items:   center !important;
+  padding:       11px 20px !important;
+  font-size:     var(--tf-md) !important;
+  border-radius: var(--rr-full) !important;
+  margin-top:    4px !important;
+}
+
+/* ══ P4. TODAY SECTION LABEL (eyebrow kicker) ════════════════ */
+.today-section-label {
+  font-size:      10px !important;
+  font-weight:    800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color:          var(--muted) !important;
+  opacity:        0.65 !important;
+  padding:        0 2px !important;
+  margin-bottom:  -6px !important;
+}
+
+/* ══ P5. BREATHWORK CIRCLE — .breathe-circle fix ════════════ */
+/*
+  The actual breathwork element uses class .breathe-circle (not
+  .breathwork-circle or .breath-circle). S17 missed it. Fixed here.
+*/
+.breathe-circle {
+  width:         clamp(100px, 28vw, 130px) !important;
+  height:        clamp(100px, 28vw, 130px) !important;
+  border-radius: 50% !important;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,.6), transparent 36%),
+    linear-gradient(145deg,
+      var(--mauve, #A67B96),
+      var(--rose,  #D4897A)) !important;
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.4),
+    0 14px 32px rgba(166,123,150,.30) !important;
+  margin:  var(--s-3) auto !important;
+  display: block !important;
+}
+
+/* ══ P6. ROOM ITEMS — target .room-item class ════════════════ */
+/*
+  Room items are rendered by JS as .room-item — not .room-card.
+  Add polish and fix name truncation with flex layout.
+*/
+.room-item {
+  border-radius: var(--rr-base) !important;
+  padding:       10px 14px !important;
+  display:       flex !important;
+  align-items:   center !important;
+  gap:           var(--s-2) !important;
+  border:        1px solid rgba(220,210,195,.55) !important;
+  background:    rgba(255,253,250,0.84) !important;
+  margin-bottom: var(--s-2) !important;
+  transition:    border-color .14s ease, box-shadow .15s ease !important;
+}
+.room-item:last-child { margin-bottom: 0 !important; }
+/* Fix name truncation — give name flex:1 to fill remaining space */
+.room-item .room-name {
+  flex:          1 1 0 !important;
+  min-width:     0 !important;
+  overflow:      hidden !important;
+  text-overflow: ellipsis !important;
+  white-space:   nowrap !important;
+  font-weight:   600 !important;
+  font-size:     var(--tf-md) !important;
+  color:         var(--text) !important;
+}
+.room-item .room-status-label {
+  font-size:  11px !important;
+  color:      var(--muted) !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+}
+.room-item .room-cycle-btn {
+  flex-shrink:   0 !important;
+  font-size:     11px !important;
+  padding:       4px 10px !important;
+  border-radius: var(--rr-full) !important;
+  border:        1px solid rgba(212,163,115,.30) !important;
+  background:    rgba(212,163,115,.08) !important;
+  color:         var(--text) !important;
+  cursor:        pointer !important;
+  font-weight:   600 !important;
+}
+body.dark .room-item,
+body.theme-dark .room-item {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.08) !important;
+}
+
+/* ══ P7. RITUAL QUICK CHIPS ══════════════════════════════════ */
+.ritual-quick-chip {
+  display:        inline-flex !important;
+  flex-direction: column !important;
+  align-items:    center !important;
+  gap:            5px !important;
+  padding:        10px 12px !important;
+  border-radius:  var(--rr-md) !important;
+  border:         1px solid rgba(220,210,195,.60) !important;
+  background:     rgba(255,253,250,.84) !important;
+  cursor:         pointer !important;
+  min-width:      74px !important;
+  text-align:     center !important;
+  transition:     border-color .14s ease, background .14s ease,
+                  transform .12s ease, box-shadow .15s ease !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+.ritual-quick-chip.done,
+.ritual-quick-chip[aria-pressed="true"] {
+  background:  rgba(212,163,115,.14) !important;
+  border-color: var(--primary) !important;
+  box-shadow:  0 0 0 2.5px rgba(212,163,115,.12) !important;
+}
+.rqc-check { font-size: 18px !important; display: block !important; line-height: 1.2 !important; }
+.rqc-label { font-size: 10px !important; font-weight: 600 !important; color: var(--text) !important; line-height: 1.2 !important; }
+
+body.dark  .ritual-quick-chip,
+body.theme-dark .ritual-quick-chip {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+body.dark .ritual-quick-chip.done,
+body.theme-dark .ritual-quick-chip.done {
+  background:   rgba(212,163,115,.20) !important;
+  border-color: rgba(212,163,115,.35) !important;
+}
+body.dark .rqc-label,
+body.theme-dark .rqc-label { color: var(--text) !important; }
+
+/* ══ P8. JOURNAL MOOD QUICK BUTTONS ══════════════════════════ */
+.mood-quick-btn {
+  display:        inline-flex !important;
+  flex-direction: column !important;
+  align-items:    center !important;
+  gap:            5px !important;
+  padding:        10px 8px !important;
+  border-radius:  var(--rr-base) !important;
+  border:         1px solid rgba(220,210,195,.50) !important;
+  background:     rgba(255,253,250,.84) !important;
+  cursor:         pointer !important;
+  min-width:      58px !important;
+  transition:     transform .1s ease, border-color .14s ease,
+                  background .14s ease, box-shadow .14s ease !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+.mood-quick-btn.active {
+  background:   rgba(212,163,115,.16) !important;
+  border-color: var(--primary) !important;
+  transform:    scale(1.04) !important;
+  box-shadow:   0 0 0 2.5px rgba(212,163,115,.14) !important;
+}
+.mq-icon  { font-size: 18px !important; line-height: 1 !important; display: block !important; }
+.mq-label { font-size: 10px !important; font-weight: 600 !important; color: var(--muted) !important; }
+.mood-quick-btn.active .mq-label { color: #6b3d1a !important; }
+
+body.dark .mood-quick-btn,
+body.theme-dark .mood-quick-btn {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+body.dark .mood-quick-btn.active,
+body.theme-dark .mood-quick-btn.active {
+  background:   rgba(212,163,115,.20) !important;
+  border-color: rgba(212,163,115,.35) !important;
+}
+body.dark .mood-quick-btn.active .mq-label,
+body.theme-dark .mood-quick-btn.active .mq-label { color: #f0c6a3 !important; }
+
+/* ══ P9. NOW BANNER (time-of-day indicator) ══════════════════ */
+#nowBanner {
+  display:       flex !important;
+  align-items:   center !important;
+  gap:           var(--s-2) !important;
+  padding:       8px var(--s-4) !important;
+  border-radius: var(--rr-full) !important;
+  background:    rgba(255,253,250,.88) !important;
+  border:        1px solid rgba(220,210,195,.5) !important;
+  font-size:     var(--tf-sm) !important;
+  align-self:    flex-start !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  flex:          none !important;
+}
+body.dark #nowBanner,
+body.theme-dark #nowBanner {
+  background:   rgba(28,24,20,.88) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+
+/* ══ P10. ATMOSPHERE CARD POLISH ═════════════════════════════ */
+.daily-atmosphere-card { border-radius: var(--rr-xl) !important; }
+.daily-atmosphere-inner {
+  display:     flex !important;
+  gap:         var(--s-3) !important;
+  align-items: flex-start !important;
+}
+.atmosphere-bubble {
+  width:           36px !important;
+  height:          36px !important;
+  border-radius:   50% !important;
+  background:      rgba(212,163,115,.14) !important;
+  display:         flex !important;
+  align-items:     center !important;
+  justify-content: center !important;
+  font-size:       16px !important;
+  flex-shrink:     0 !important;
+  margin-top:      2px !important;
+}
+.daily-atmosphere-title {
+  font-size:      10px !important;
+  font-weight:    800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color:          var(--muted) !important;
+  margin:         0 0 4px !important;
+}
+.daily-atmosphere-line {
+  font-family:    var(--ff-serif) !important;
+  font-style:     italic !important;
+  font-size:      clamp(16px, 4vw, 20px) !important;
+  font-weight:    600 !important;
+  letter-spacing: -0.015em !important;
+  color:          var(--text) !important;
+  margin:         0 0 4px !important;
+}
+.daily-atmosphere-support {
+  font-size:   var(--tf-sm) !important;
+  color:       var(--muted) !important;
+  line-height: 1.45 !important;
+  margin:      0 !important;
+}
+body.dark .daily-atmosphere-card,
+body.theme-dark .daily-atmosphere-card {
+  background:
+    radial-gradient(ellipse 70% 50% at 90% 0%,
+      rgba(212,163,115,0.10) 0%, transparent 55%),
+    rgba(34,29,25,.92) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+
+/* ══ P11. PRIVACY CHIP ROW ═══════════════════════════════════ */
+.softer-privacy-chip-row {
+  display:         flex !important;
+  justify-content: center !important;
+  margin-bottom:   -8px !important;
+}
+.privacy-device-chip {
+  font-size:     10px !important;
+  font-weight:   600 !important;
+  opacity:       0.55 !important;
+  letter-spacing: 0.02em !important;
+  padding:       4px 12px !important;
+  border-radius: var(--rr-full) !important;
+  background:    rgba(212,163,115,.06) !important;
+  border:        1px solid rgba(212,163,115,.16) !important;
+}
+body.dark .privacy-device-chip,
+body.theme-dark .privacy-device-chip {
+  background:   rgba(212,163,115,.10) !important;
+  border-color: rgba(212,163,115,.20) !important;
+}
+
+/* ══ P12. RHYTHM CHIPS (Today Feels) ════════════════════════ */
+.day-rhythm-label {
+  font-size:      10px !important;
+  font-weight:    800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color:          var(--muted) !important;
+}
+.day-rhythm-row {
+  display:     flex !important;
+  align-items: center !important;
+  gap:         var(--s-2) !important;
+  flex-wrap:   wrap !important;
+}
+.rhythm-chip {
+  border-radius:  var(--rr-full) !important;
+  padding:        6px 14px !important;
+  font-size:      var(--tf-sm) !important;
+  font-weight:    600 !important;
+  border:         1px solid rgba(220,210,195,.60) !important;
+  background:     rgba(255,253,250,.84) !important;
+  cursor:         pointer !important;
+  color:          var(--text) !important;
+  transition:     transform .1s ease, border-color .14s ease,
+                  background .14s ease !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+.rhythm-chip[aria-pressed="true"],
+.rhythm-chip.active {
+  background:   rgba(212,163,115,.16) !important;
+  border-color: var(--primary) !important;
+  transform:    scale(1.04) !important;
+  box-shadow:   0 0 0 2.5px rgba(212,163,115,.12) !important;
+}
+body.dark .rhythm-chip,
+body.theme-dark .rhythm-chip {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.10) !important;
+}
+
+/* ══ P13. SOFT GRID + SOFT CARD (Home reset toolkit) ════════ */
+.soft-grid {
+  display:               grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)) !important;
+  gap:                   var(--s-3) !important;
+  margin-top:            var(--s-3) !important;
+}
+.soft-card {
+  padding:       var(--s-4) !important;
+  border-radius: var(--rr-base) !important;
+  background:    rgba(255,253,250,0.6) !important;
+  border:        1px solid rgba(220,210,195,.40) !important;
+  font-size:     var(--tf-sm) !important;
+  line-height:   1.5 !important;
+  color:         var(--muted) !important;
+}
+.soft-card strong {
+  display:       block !important;
+  font-size:     var(--tf-sm) !important;
+  font-weight:   700 !important;
+  margin-bottom: 5px !important;
+  color:         var(--text) !important;
+}
+body.dark .soft-card,
+body.theme-dark .soft-card {
+  background:   rgba(34,29,25,.55) !important;
+  border-color: rgba(255,255,255,.06) !important;
+}
+
+/* ══ P14. INPUT + INPUT ROW ══════════════════════════════════ */
+.input-row {
+  display:     flex !important;
+  gap:         var(--s-2) !important;
+  align-items: center !important;
+  margin-top:  var(--s-3) !important;
+}
+.input,
+input.input {
+  border-radius: var(--rr-base) !important;
+  border:        1px solid rgba(220,210,195,.65) !important;
+  padding:       10px 14px !important;
+  font-size:     var(--tf-md) !important;
+  font-family:   var(--ff-ui) !important;
+  min-height:    42px !important;
+  flex:          1 !important;
+  background:    rgba(255,253,250,.85) !important;
+  color:         var(--text) !important;
+}
+input.input:focus { border-color: var(--primary) !important; outline: none !important; box-shadow: 0 0 0 3px rgba(212,163,115,.14) !important; }
+body.dark .input,
+body.dark input.input,
+body.theme-dark .input,
+body.theme-dark input.input {
+  background:   rgba(34,29,25,.92) !important;
+  border-color: rgba(255,255,255,.10) !important;
+  color:        var(--text) !important;
+}
+
+/* ══ P15. COLLAPSE SECTION (Supplies & Bills) ════════════════ */
+.collapse-section { border: none !important; background: none !important; }
+.collapse-summary {
+  display:         flex !important;
+  align-items:     center !important;
+  gap:             var(--s-2) !important;
+  padding:         10px 16px !important;
+  border-radius:   var(--rr-lg) !important;
+  background:      rgba(255,253,250,.84) !important;
+  border:          1px solid rgba(220,210,195,.50) !important;
+  cursor:          pointer !important;
+  list-style:      none !important;
+  user-select:     none !important;
+  margin-bottom:   var(--s-3) !important;
+}
+.collapse-label {
+  font-size:  var(--tf-md) !important;
+  font-weight: 600 !important;
+  color:      var(--text) !important;
+  flex:       1 !important;
+}
+.collapse-hint {
+  font-size: var(--tf-sm) !important;
+  color:     var(--muted) !important;
+}
+body.dark .collapse-summary,
+body.theme-dark .collapse-summary {
+  background:   rgba(34,29,25,.85) !important;
+  border-color: rgba(255,255,255,.08) !important;
+}
+
+/* ══ P16. MINI DONUT HOST ════════════════════════════════════ */
+#miniDonutHost {
+  background:  none !important;
+  border:      none !important;
+  box-shadow:  none !important;
+  padding:     0 !important;
+  display:     block !important;
+}
+.mini-donut-row {
+  display:         flex !important;
+  gap:             var(--s-2) !important;
+  flex-wrap:       wrap !important;
+  justify-content: space-between !important;
+}
+
+/* ══ P17. NEXT STEP CARD ════════════════════════════════════ */
+.dash-next-step-card {
+  background:
+    radial-gradient(ellipse 80% 55% at 8% 6%,
+      rgba(212,163,115,0.12) 0%, transparent 52%),
+    rgba(255,253,250,0.92) !important;
+}
+body.dark .dash-next-step-card,
+body.theme-dark .dash-next-step-card {
+  background:
+    radial-gradient(ellipse 80% 55% at 8% 6%,
+      rgba(212,163,115,0.14) 0%, transparent 52%),
+    rgba(34,29,25,.92) !important;
+}
+
+/* ══ P18. GENTLE WINS SECTION ════════════════════════════════ */
+.gentle-wins-section {
+  padding:       var(--s-3) var(--s-4) !important;
+  border-radius: var(--rr-lg) !important;
+  background:    rgba(212,163,115,.06) !important;
+  border:        1px solid rgba(212,163,115,.14) !important;
+}
+body.dark .gentle-wins-section,
+body.theme-dark .gentle-wins-section {
+  background:   rgba(212,163,115,.10) !important;
+  border-color: rgba(212,163,115,.18) !important;
+}
+
+/* ══ P19. MENTAL LOAD CARD ═══════════════════════════════════ */
+.mental-load-card {
+  border-radius: var(--rr-xl) !important;
+  background:
+    radial-gradient(ellipse 60% 40% at 8% 8%,
+      rgba(212,163,115,0.08) 0%, transparent 55%),
+    rgba(255,253,250,0.92) !important;
+}
+body.dark .mental-load-card,
+body.theme-dark .mental-load-card {
+  background:
+    radial-gradient(ellipse 60% 40% at 8% 8%,
+      rgba(212,163,115,0.10) 0%, transparent 55%),
+    rgba(34,29,25,.92) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+
+/* ══ P20. DIVIDERS + EMPTY STATE ═════════════════════════════ */
+.divider {
+  height:     1px !important;
+  background: rgba(220,210,195,.4) !important;
+  margin:     var(--s-3) 0 !important;
+  border:     none !important;
+  flex-shrink: 0 !important;
+}
+body.dark .divider,
+body.theme-dark .divider {
+  background: rgba(255,255,255,.06) !important;
+}
+.empty {
+  font-size:  var(--tf-sm) !important;
+  color:      var(--muted) !important;
+  font-style: italic !important;
+  padding:    var(--s-3) 0 !important;
+}
+
+/* ══ P21. MOBILE STACK GAP — tighten on small screens ═══════ */
+@media (max-width: 479px) {
+  #view-today .stack,
+  #view-reset .stack,
+  #view-home .stack,
+  #view-journal .stack,
+  #view-rituals .stack {
+    gap: 18px !important;
+  }
+}
+
+/* ══ P22. TOPBAR BUTTON SIZING ════════════════════════════════ */
+.topbar .soft-btn,
+.topbar button.soft-btn,
+.topbar .mini-btn {
+  font-size:  var(--tf-sm) !important;
+  padding:    7px 14px !important;
+  min-height: 34px !important;
+}
+
+/* ══ P23. DESKTOP 2-COL TODAY VIEW ══════════════════════════ */
+@media (min-width: 860px) {
+  .today-dash-split {
+    display:               grid !important;
+    grid-template-columns: 58fr 42fr !important;
+    gap:                   var(--s-5) !important;
+    align-items:           start !important;
+  }
+  .today-dash-side {
+    display: block !important;
+  }
+}
+
+/* ══ P24. STREAK NUMBER DISPLAY ══════════════════════════════ */
+#streakNum {
+  font-family:    var(--ff-serif) !important;
+  font-size:      clamp(28px, 7vw, 44px) !important;
+  font-weight:    700 !important;
+  letter-spacing: -0.04em !important;
+  color:          var(--text) !important;
+}
+
+/* ══ P25. QUICK RESET CARD + SOFTER QUICK ═══════════════════ */
+.softer-quick-reset-card { border-radius: var(--rr-xl) !important; }
+.softer-take-action-cluster { display: block !important; }
+
+/* ══ P26. TODAY EXPAND BUTTON ════════════════════════════════ */
+.today-expand-btn {
+  align-self:  flex-start !important;
+  font-size:   var(--tf-sm) !important;
+  padding:     7px 16px !important;
+  min-height:  36px !important;
+  border-radius: var(--rr-full) !important;
+}
+
+/* ══ P27. HOME RHYTHM DONUT CENTERING ════════════════════════ */
+.home-rhythm-donut {
+  position: relative !important;
+  margin:   0 auto !important;
+}
+.home-rhythm-center {
+  position:        absolute !important;
+  top:             50% !important;
+  left:            50% !important;
+  transform:       translate(-50%, -50%) !important;
+  text-align:      center !important;
+  pointer-events:  none !important;
+}
+.home-rhythm-center span {
+  display:    block !important;
+  font-size:  10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  color:      var(--muted) !important;
+}
+.home-rhythm-center strong {
+  display:        block !important;
+  font-family:    var(--ff-serif) !important;
+  font-size:      clamp(13px, 3.8vw, 18px) !important;
+  font-weight:    700 !important;
+  letter-spacing: -0.02em !important;
+  color:          var(--text) !important;
+  white-space:    nowrap !important;
+  line-height:    1.1 !important;
+}
+.home-rhythm-legend {
+  display:         flex !important;
+  gap:             var(--s-3) !important;
+  justify-content: center !important;
+  margin-top:      var(--s-2) !important;
+  font-size:       11px !important;
+  color:           var(--muted) !important;
+  flex-wrap:       wrap !important;
+}
+.home-rhythm-legend span {
+  display:     flex !important;
+  align-items: center !important;
+  gap:         4px !important;
+}
+
+/* ══ P28. SOFTER LUXE HERO CARD WRAPPER ══════════════════════ */
+/* Make the hero card feel premium — warm gradient surface */
+#dashHeroPersonal {
+  border-radius: var(--rr-2xl) !important;
+  border:        1px solid rgba(212,163,115,.16) !important;
+  background:
+    radial-gradient(ellipse 80% 55% at 12% 8%,
+      rgba(212,163,115,0.12) 0%, transparent 52%),
+    radial-gradient(ellipse 55% 45% at 90% 90%,
+      rgba(166,123,150,0.08) 0%, transparent 48%),
+    linear-gradient(160deg, #fefcf8 0%, #faf6ef 100%) !important;
+  box-shadow:    var(--es-lg) !important;
+  overflow:      hidden !important;
+}
+body.dark #dashHeroPersonal,
+body.theme-dark #dashHeroPersonal {
+  background:
+    radial-gradient(ellipse 78% 52% at 12% 10%,
+      rgba(212,163,115,0.16) 0%, transparent 54%),
+    linear-gradient(160deg, #2a221c 0%, #1f1a16 100%) !important;
+  border-color:  rgba(212,163,115,.22) !important;
+  box-shadow:    0 20px 48px rgba(0,0,0,.38),
+                 inset 0 1px 0 rgba(255,255,255,.05) !important;
+}
+
+/* ══ P29. ONBOARDING PHASE CARD GRID ════════════════════════ */
+.onboarding-phase-grid,
+.phase-card-grid {
+  display:               grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap:                   var(--s-3) !important;
+  margin-top:            var(--s-3) !important;
+}
+@media (min-width: 600px) {
+  .onboarding-phase-grid,
+  .phase-card-grid { grid-template-columns: repeat(4, 1fr) !important; }
+}
+
+/* ══ P30. MAIN QUEST CARD INSIDE TASKS ══════════════════════ */
+.main-quest-card {
+  border-radius: var(--rr-base) !important;
+  padding:       var(--s-4) !important;
+  background:
+    radial-gradient(ellipse 70% 50% at 0% 0%,
+      rgba(212,163,115,0.10) 0%, transparent 55%),
+    rgba(255,253,250,0.6) !important;
+  border:        1px solid rgba(220,210,195,.4) !important;
+}
+body.dark .main-quest-card,
+body.theme-dark .main-quest-card {
+  background:
+    radial-gradient(ellipse 70% 50% at 0% 0%,
+      rgba(212,163,115,0.12) 0%, transparent 55%),
+    rgba(34,29,25,.55) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+
+/* ══ P31. TABLET VIEW (768–1023px) ══════════════════════════ */
+@media (min-width: 768px) and (max-width: 859px) {
+  .softer-luxe-hero {
+    display:               grid !important;
+    grid-template-columns: 1fr auto !important;
+    align-items:           center !important;
+    gap:                   clamp(20px, 4vw, 40px) !important;
+    padding:               clamp(24px, 3.5vw, 32px) !important;
+    text-align:            left !important;
+  }
+  .softer-rhythm-panel { order: 1 !important; }
+  .softer-luxe-hero-copy { order: 0 !important; text-align: left !important; }
+  .home-rhythm-donut {
+    width:  clamp(150px, 20vw, 180px) !important;
+    height: clamp(150px, 20vw, 180px) !important;
+  }
+  .day-rhythm-row { justify-content: flex-start !important; }
+}
+
+/* ══ P32. PRINT ══════════════════════════════════════════════ */
+@media print {
+  .softer-luxe-hero,
+  .softer-atmosphere-cluster,
+  #nowBanner,
+  .softer-privacy-chip-row { display: none !important; }
+}
+
+</style>
+
 <script>
 /* Softer fix: skip entry gate on desktop — set key before initSofterEntryGate() runs */
 (function() {
