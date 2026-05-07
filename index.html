@@ -15045,5 +15045,76 @@ body.theme-dark .main-quest-card {
 })();
 </script>
 
+<!-- ═══════════════════════════════════════════════════════════
+     SOFTER — ACCESS BLOCKER RESCUE v1
+     Fixes:
+       1. Onboarding steps 2-5 have no skip — user stuck after "Let's get started"
+       2. Steps 3 & 4 toast-block Continue if no vibe/goal selected
+       3. Entry gate (softerEntryGate) has no skip option
+     Strategy:
+       • Add "Skip setup" button to onboarding steps 2-5 that fires close-onboarding
+       • Add "Skip for now" to entry gate that dismisses with calm mood
+     ═══════════════════════════════════════════════════════════ -->
+<script id="softer-rescue-v1">
+(function () {
+  'use strict';
+
+  function init() {
+    /* ── 1. Add "Skip setup" to onboarding steps 2–5 ── */
+    var onbTrack = document.getElementById('onboardingTrack');
+    if (onbTrack) {
+      onbTrack.querySelectorAll('.onboarding-step[data-onboarding-step]').forEach(function (step) {
+        var stepNum = parseInt(step.getAttribute('data-onboarding-step'), 10);
+        if (stepNum < 2) return; /* step 1 already has skip */
+        var actions = step.querySelector('.onboarding-actions');
+        if (!actions) return;
+        if (actions.querySelector('[data-rescue-skip]')) return; /* already added */
+        var skipBtn = document.createElement('button');
+        skipBtn.type = 'button';
+        skipBtn.className = 'soft-btn muted';
+        skipBtn.setAttribute('data-action', 'close-onboarding');
+        skipBtn.setAttribute('data-rescue-skip', '1');
+        skipBtn.textContent = 'Skip setup';
+        skipBtn.style.cssText = 'font-size:13px;opacity:0.75;margin-top:2px;';
+        actions.appendChild(skipBtn);
+      });
+    }
+
+    /* ── 2. Add "Skip for now" to softerEntryGate ── */
+    var gate = document.getElementById('softerEntryGate');
+    if (gate) {
+      var options = gate.querySelector('.softer-entry-options');
+      if (options && !gate.querySelector('[data-rescue-entry-skip]')) {
+        var skipEntry = document.createElement('button');
+        skipEntry.type = 'button';
+        skipEntry.className = 'softer-entry-btn softer-entry-secondary';
+        skipEntry.setAttribute('data-rescue-entry-skip', '1');
+        skipEntry.textContent = 'Skip for now';
+        skipEntry.style.cssText = 'font-size:13px;opacity:0.7;';
+        options.appendChild(skipEntry);
+
+        skipEntry.addEventListener('click', function () {
+          /* Dismiss gate with "calm" as the mood value */
+          try { localStorage.setItem('softerEntryMoodV1', 'calm'); } catch (e) {}
+          gate.setAttribute('hidden', '');
+          gate.classList.remove('is-visible');
+          var shell = document.getElementById('appShell');
+          if (shell) {
+            shell.removeAttribute('aria-hidden');
+            shell.style.pointerEvents = '';
+          }
+        });
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 </body>
 </html>
