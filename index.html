@@ -3429,12 +3429,13 @@ html[data-mode="dark"] #todayHeroStrip { box-shadow: 0 20px 48px rgba(0, 0, 0, 0
         bottom: 0;
         left: 0;
         right: 0;
-        height: 68px;
+        height: auto;
+        min-height: 60px;
         display: flex !important;
         justify-content: space-around;
-        align-items: center;
+        align-items: stretch;
         z-index: 50;
-        padding-bottom: env(safe-area-inset-bottom);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
         background: rgba(255, 255, 255, 0.92);
         border-top: 1px solid rgba(233, 228, 220, 0.55);
         box-shadow: 0 -10px 36px rgba(180, 130, 110, 0.10), 0 -1px 0 rgba(255,255,255,0.95);
@@ -5393,11 +5394,12 @@ html[data-mode="dark"] [style*="background-color:#fff"] {
   }
 
   .bottom-nav {
-    left: 12px !important;
-    right: 12px !important;
-    width: auto !important;
-    max-width: calc(100% - 24px) !important;
-    bottom: max(10px, env(safe-area-inset-bottom, 0px)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    bottom: 0 !important;
+    border-radius: 0 !important;
     z-index: 1200 !important;
   }
   .quick-add-fab {
@@ -5547,10 +5549,7 @@ html[data-mode="dark"] .topbar .soft-btn:not(.muted) {
   color: #f5efe7 !important;
 }
 
-/* FIX: bottom-nav safe area on modern iOS */
-.bottom-nav {
-  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-}
+/* Safe area handled via S13 padding shorthand — no override needed */
 
 
 /* FIX: Tighter atmosphere cluster on desktop — was creating large blank bridge */
@@ -6952,12 +6951,14 @@ nav.bottom-nav {
   -webkit-backdrop-filter: blur(28px) !important;
   box-shadow:           0 -8px 28px rgba(73,55,38,.07),
                         inset 0 1px 0 rgba(255,255,255,.95) !important;
-  padding: 4px
+  /* Height is content-driven — padding-bottom handles iPhone home indicator */
+  height:               auto !important;
+  padding: 6px
            max(8px, env(safe-area-inset-right, 0px))
-           calc(4px + env(safe-area-inset-bottom, 0px))
+           env(safe-area-inset-bottom, 0px)
            max(8px, env(safe-area-inset-left, 0px)) !important;
   display:              flex !important;
-  align-items:          center !important;
+  align-items:          stretch !important;
   justify-content:      space-around !important;
 }
 
