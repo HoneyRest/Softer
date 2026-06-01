@@ -1086,7 +1086,11 @@ html[data-mode="dark"] #todayHeroStrip { box-shadow: 0 20px 48px rgba(0, 0, 0, 0
     }
 
     html[data-mode="dark"] .meter {
-      background: conic-gradient(var(--tone) calc(var(--val) * 1%), rgba(255,255,255,0.16) 0) !important;
+      /* Brighten fill + visible track so 0%/48%/46% are visually distinct */
+      background: conic-gradient(
+        color-mix(in srgb, var(--tone) 55%, #ffffff) calc(var(--val) * 1%),
+        rgba(255,255,255,0.13) 0
+      ) !important;
     }
 
     .meter::after {
@@ -19514,6 +19518,25 @@ html[data-mode="dark"] :is([style*="background:#fff"], [style*="background: #fff
     min-height: 52px !important;
     font-size: 15px !important;
   }
+}
+</style>
+
+<style id="softer-dark-donut-fill-fix">
+html[data-mode="dark"] .meter {
+  background: conic-gradient(
+    color-mix(in srgb, var(--tone, #c9856a) 68%, #ffe2d2 32%) calc(var(--val, 0) * 1%),
+    rgba(16, 11, 11, 0.72) 0
+  ) !important;
+  box-shadow: 0 0 0 1px rgba(255, 226, 210, 0.14), 0 12px 26px rgba(0, 0, 0, 0.34) !important;
+}
+html[data-mode="dark"] .meter::after {
+  background: color-mix(in srgb, var(--surface, #211617) 76%, var(--tone, #c9856a) 24%) !important;
+  border-color: rgba(255, 226, 210, 0.22) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 244, 236, 0.05) !important;
+}
+html[data-mode="dark"] .meter span {
+  color: #fff4ec !important;
+  text-shadow: 0 1px 7px rgba(0, 0, 0, 0.42) !important;
 }
 </style>
 
