@@ -1074,7 +1074,7 @@ html[data-mode="dark"] #todayHeroStrip { box-shadow: 0 20px 48px rgba(0, 0, 0, 0
       width: 88px;
       height: 88px;
       border-radius: 50%;
-      background: conic-gradient(var(--tone) calc(var(--val) * 1%), #f0e8e2 0);
+      background: conic-gradient(var(--tone) calc(var(--val) * 1%), rgba(0,0,0,0.10) 0);
       display: grid;
       place-items: center;
       position: relative;
@@ -1086,7 +1086,7 @@ html[data-mode="dark"] #todayHeroStrip { box-shadow: 0 20px 48px rgba(0, 0, 0, 0
     }
 
     html[data-mode="dark"] .meter {
-      background: conic-gradient(var(--tone) calc(var(--val) * 1%), #3a3530 0);
+      background: conic-gradient(var(--tone) calc(var(--val) * 1%), rgba(255,255,255,0.16) 0) !important;
     }
 
     .meter::after {
@@ -1190,7 +1190,10 @@ html[data-mode="dark"] #todayHeroStrip { box-shadow: 0 20px 48px rgba(0, 0, 0, 0
     }
 
     .rhythm-ring .ring-track {
-      stroke: rgba(180,165,158,0.15);
+      stroke: rgba(140,125,118,0.22);
+    }
+    html[data-mode="dark"] .rhythm-ring .ring-track {
+      stroke: rgba(255,255,255,0.14);
     }
 
     .rhythm-ring .ring-progress {
@@ -1870,8 +1873,11 @@ html[data-mode="dark"] #todayHeroStrip { box-shadow: 0 20px 48px rgba(0, 0, 0, 0
 
     .mini-donut-track {
       fill: none;
-      stroke: color-mix(in srgb, var(--border) 70%, transparent);
+      stroke: rgba(0,0,0,0.12);
       stroke-width: 4;
+    }
+    html[data-mode="dark"] .mini-donut-track {
+      stroke: rgba(255,255,255,0.16);
     }
 
     .mini-donut-fill {
@@ -2868,6 +2874,66 @@ html[data-mode="dark"] #todayHeroStrip { box-shadow: 0 20px 48px rgba(0, 0, 0, 0
       border-radius: 50%;
       border: 2px solid rgba(255, 255, 255, 0.75);
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+    }
+
+    /* ── Onboarding feature preview grid ── */
+    .onboarding-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 18px 0 4px;
+      flex: 1;
+    }
+
+    @media (min-width: 540px) {
+      .onboarding-features { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    .onboarding-feat {
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .onboarding-feat-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+      display: grid;
+      place-items: center;
+      color: var(--primary);
+      margin-bottom: 2px;
+      flex-shrink: 0;
+    }
+
+    .onboarding-feat strong {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      font-family: var(--font-ui);
+      letter-spacing: -0.01em;
+    }
+
+    .onboarding-feat span {
+      font-size: 0.74rem;
+      color: var(--muted);
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    html[data-mode="dark"] .onboarding-feat {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.09);
+    }
+
+    html[data-mode="dark"] .onboarding-feat-icon {
+      background: color-mix(in srgb, var(--primary) 18%, transparent);
     }
 
     .onboarding-actions {
@@ -6739,7 +6805,7 @@ html[data-mode="dark"] #todayHeroStrip {
   height: clamp(96px, 28vw, 130px) !important;
   filter: drop-shadow(0 8px 22px rgba(212,163,115,.18)) !important;
 }
-.rhythm-ring .ring-track { stroke: rgba(212,163,115,.16) !important; stroke-width: 9 !important; }
+.rhythm-ring .ring-track { stroke: rgba(140,115,95,.28) !important; stroke-width: 9 !important; }
 .rhythm-ring .ring-progress { stroke-width: 9 !important; stroke-linecap: round !important; }
 .rhythm-ring .ring-value {
   font-family:    var(--ff-serif) !important;
@@ -6748,7 +6814,7 @@ html[data-mode="dark"] #todayHeroStrip {
   font-size:      clamp(20px, 5vw, 26px) !important;
   color:          var(--text) !important;
 }
-html[data-mode="dark"] .rhythm-ring .ring-track { stroke: rgba(255,255,255,.08) !important; }
+html[data-mode="dark"] .rhythm-ring .ring-track { stroke: rgba(255,255,255,.18) !important; }
 
 /* Hero stat row */
 #heroStatRow {
@@ -7437,7 +7503,7 @@ html[data-mode="dark"] .bottom-nav-btn.active {
   background: rgba(212,163,115,.14) !important;
 }
 html[data-mode="dark"] .bottom-nav-btn.active::before { background: #e8c19a !important; }
-html[data-mode="dark"] .rhythm-ring .ring-track { stroke: rgba(255,255,255,.08) !important; }
+html[data-mode="dark"] .rhythm-ring .ring-track { stroke: rgba(255,255,255,.18) !important; }
 html[data-mode="dark"] select input[type="text"] input[type="number"] textarea {
   background:   rgba(34,29,25,.92) !important;
   border-color: rgba(255,255,255,.10) !important;
@@ -8733,8 +8799,11 @@ html[data-mode="dark"] .mini-donut {
 }
 .mini-donut-ring .mini-donut-track {
   fill: none !important;
-  stroke: color-mix(in srgb, var(--border) 80%, transparent) !important;
+  stroke: rgba(0,0,0,0.13) !important;
   stroke-width: 3 !important;
+}
+html[data-mode="dark"] .mini-donut-ring .mini-donut-track {
+  stroke: rgba(255,255,255,0.16) !important;
 }
 .mini-donut-ring .mini-donut-fill {
   fill: none !important;
@@ -11229,6 +11298,14 @@ html[data-mode="dark"] nav.bottom-nav {
         <span class="bottom-nav-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg></span>
         <span class="bottom-nav-label">Rituals</span>
       </button>
+      <button type="button" class="bottom-nav-btn" data-view="partner">
+        <span class="bottom-nav-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+        <span class="bottom-nav-label">Partner</span>
+      </button>
+      <button type="button" class="bottom-nav-btn" data-view="finances">
+        <span class="bottom-nav-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <span class="bottom-nav-label">Money</span>
+      </button>
     </nav>
 
     <button class="task-fab" type="button" data-action="open-task-modal" aria-label="Add task">+</button>
@@ -11277,10 +11354,51 @@ html[data-mode="dark"] nav.bottom-nav {
         <div class="onboarding-track" id="onboardingTrack">
           <div class="onboarding-step" data-onboarding-step="1">
             <h2 class="onboarding-welcome-title" id="onboardingWelcomeTitle">Welcome to Softer</h2>
-            <p class="subtitle" style="margin-top:10px;">Your private calm-home command centre—offline, gentle, yours.</p>
+            <p class="subtitle" style="margin-top:8px;">Your private calm-home command centre — offline, gentle, always yours.</p>
+            <div class="onboarding-features">
+              <div class="onboarding-feat">
+                <div class="onboarding-feat-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.25"/>
+                    <path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <strong>Daily rhythm</strong>
+                <span>Rituals, tasks &amp; mood — your whole day in one soft view.</span>
+              </div>
+              <div class="onboarding-feat">
+                <div class="onboarding-feat-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <rect x="3" y="10" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.25"/>
+                    <path d="M7 10V7a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <strong>Home without stress</strong>
+                <span>Room resets, checklists &amp; supplies — calm and clear.</span>
+              </div>
+              <div class="onboarding-feat">
+                <div class="onboarding-feat-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-opacity="0.4"/>
+                    <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.6"/>
+                  </svg>
+                </div>
+                <strong>Gentle money dates</strong>
+                <span>Goals, bills &amp; savings — without shame or spreadsheets.</span>
+              </div>
+              <div class="onboarding-feat">
+                <div class="onboarding-feat-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="currentColor" fill-opacity="0.1"/>
+                  </svg>
+                </div>
+                <strong>Journal &amp; rituals</strong>
+                <span>Track streaks, log moods &amp; build habits that actually stick.</span>
+              </div>
+            </div>
             <div class="onboarding-actions">
               <button type="button" class="soft-btn" data-action="onboarding-next">Let's get started →</button>
-              <button type="button" class="soft-btn muted" data-action="close-onboarding">Skip</button>
+              <button type="button" class="soft-btn muted" data-action="close-onboarding">Skip setup</button>
             </div>
           </div>
           <div class="onboarding-step" data-onboarding-step="2">
@@ -11362,6 +11480,9 @@ html[data-mode="dark"] nav.bottom-nav {
       <div class="input-row">
         <input class="input" id="nameInput" maxlength="24" placeholder="Your name (e.g., Sofia) — optional" aria-label="Your name (optional)" />
         <button class="soft-btn" data-action="save-personalize">Save</button>
+      </div>
+      <div class="input-row" style="margin-top:10px;">
+        <button class="soft-btn muted" type="button" data-action="toggle-theme" style="width:100%;">Toggle dark mode</button>
       </div>
       <div class="input-row" style="margin-top:10px;">
         <input class="input" id="partnerNameInput" maxlength="24" placeholder="Your partner's name (optional)" aria-label="Partner's name (optional)" />
@@ -11446,6 +11567,7 @@ html[data-mode="dark"] nav.bottom-nav {
         <button type="button" class="soft-btn muted" data-action="reset-app-defaults">Clear app data</button>
       </div>
       <div class="onboarding-actions">
+        <button class="soft-btn" data-action="save-personalize">Save</button>
         <button class="soft-btn muted" data-action="close-personalize">Close</button>
       </div>
     </div>
@@ -19276,7 +19398,6 @@ html[data-mode="dark"] :is(.mood-btn.active, .energy-btn.active, .feel-btn.activ
 }
 
 html[data-mode="dark"] :is(
-  .meter,
   .meter-track,
   .energy-mood-wrap,
   .progress,
@@ -19392,6 +19513,61 @@ html[data-mode="dark"] :is([style*="background:#fff"], [style*="background: #fff
   [data-softer-entry] {
     min-height: 52px !important;
     font-size: 15px !important;
+  }
+}
+</style>
+
+<style id="softer-mobile-personalize-nav-fix">
+@media (max-width: 900px) {
+  #personalize.show {
+    display: flex !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 3200 !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    padding: max(14px, env(safe-area-inset-top, 0px)) 14px calc(120px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  #personalize.show .onboarding-card {
+    width: min(100%, 520px) !important;
+    max-height: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    margin: 0 auto !important;
+    border-radius: 24px !important;
+  }
+  body:has(#personalize.show) {
+    overflow: hidden !important;
+  }
+  body:has(#personalize.show) .bottom-nav,
+  body:has(#personalize.show) .mobile-footer-credit {
+    display: none !important;
+  }
+  .bottom-nav,
+  nav.bottom-nav {
+    justify-content: flex-start !important;
+    gap: 2px !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x proximity !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .bottom-nav-btn {
+    flex: 0 0 72px !important;
+    min-width: 72px !important;
+    scroll-snap-align: center !important;
+  }
+}
+@media (max-width: 360px) {
+  .bottom-nav-btn {
+    flex-basis: 66px !important;
+    min-width: 66px !important;
   }
 }
 </style>
